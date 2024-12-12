@@ -1,7 +1,7 @@
-import 'package:appointment_app/core/theming/colors_manager.dart';
-import 'package:appointment_app/core/theming/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:monglish_app/core/theming/colors_manager.dart';
+import 'package:monglish_app/core/theming/styles.dart';
 
 class CustomMainTextFormFiels extends StatelessWidget {
   const CustomMainTextFormFiels({

@@ -1,7 +1,7 @@
-import 'package:appointment_app/core/theming/colors_manager.dart';
-import 'package:appointment_app/core/theming/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:monglish_app/core/theming/colors_manager.dart';
+import 'package:monglish_app/core/theming/styles.dart';
 
 class CustomMainButton extends StatelessWidget {
   final double? borderRadius;
@@ -30,21 +30,21 @@ class CustomMainButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       style: ButtonStyle(
-        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+        shape: WidgetStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius ?? 16.0),
           ),
         ),
-        backgroundColor: MaterialStatePropertyAll(
+        backgroundColor: WidgetStatePropertyAll(
           backgroundColor ?? ColorsManager.mainBlue,
         ),
-        padding: MaterialStateProperty.all<EdgeInsets>(
+        padding: WidgetStateProperty.all<EdgeInsets>(
           EdgeInsets.symmetric(
             horizontal: horizontalPadding?.w ?? 12.w,
             vertical: verticalPadding?.h ?? 14.h,
           ),
         ),
-        fixedSize: MaterialStateProperty.all(
+        fixedSize: WidgetStateProperty.all(
           Size(buttonWidth?.w ?? double.maxFinite, buttonHeight ?? 52.h),
         ),
       ),

@@ -1,6 +1,6 @@
-import 'package:appointment_app/core/helpers/constants.dart';
-import 'package:appointment_app/core/helpers/shared_pref_helper.dart';
 import 'package:dio/dio.dart';
+import 'package:monglish_app/core/helpers/constants.dart';
+import 'package:monglish_app/core/helpers/shared_pref_helper.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioFactory {

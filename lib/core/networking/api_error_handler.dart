@@ -1,5 +1,5 @@
-import 'package:appointment_app/core/networking/api_error_model.dart';
 import 'package:dio/dio.dart';
+import 'package:monglish_app/core/networking/api_error_model.dart';
 import 'api_constants.dart';
 
 // TODO: wallahy I will refactor this .. Omar Ahmed
