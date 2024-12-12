@@ -22,7 +22,7 @@ class MonglishApp extends StatelessWidget {
           primaryColor: ColorsManager.mainBlue,
           scaffoldBackgroundColor: Colors.white,
         ),
-        initialRoute: isUserLoggedIn ? Routes.homeView : Routes.onBoardingView,
+        initialRoute: isUserLoggedIn ? Routes.homeView : Routes.loginView,
       ),
     );
   }
