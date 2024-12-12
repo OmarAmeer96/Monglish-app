@@ -14,7 +14,7 @@ class _ApiService implements ApiService {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'https://vcare.integration25.com/api/';
+    baseUrl ??= 'https://monglishtest.fekracomputers.net/api/';
   }
 
   final Dio _dio;
@@ -37,7 +37,7 @@ class _ApiService implements ApiService {
     )
         .compose(
           _dio.options,
-          'auth/login',
+          'login',
           queryParameters: queryParameters,
           data: _data,
         )
