@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:monglish_app/core/helpers/constants.dart';
 import 'package:monglish_app/core/routing/app_router.dart';
 import 'package:monglish_app/core/routing/routes.dart';
 import 'package:monglish_app/core/theming/colors_manager.dart';
@@ -22,7 +21,7 @@ class MonglishApp extends StatelessWidget {
           primaryColor: ColorsManager.mainOrange,
           scaffoldBackgroundColor: Colors.white,
         ),
-        initialRoute: isUserLoggedIn ? Routes.homeView : Routes.loginView,
+        initialRoute: Routes.splashView,
         // initialRoute: isUserLoggedIn ? Routes.homeView : Routes.splashView,
       ),
     );

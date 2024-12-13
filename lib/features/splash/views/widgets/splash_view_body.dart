@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:monglish_app/core/helpers/constants.dart';
 import 'package:monglish_app/core/helpers/extensions.dart';
 import 'package:monglish_app/core/routing/routes.dart';
 import 'package:monglish_app/features/splash/views/widgets/fading_logo.dart';
@@ -32,7 +33,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Container(Handled the navigation
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment(0.00, 1.00),
@@ -93,8 +94,11 @@ class _SplashViewBodyState extends State<SplashViewBody>
     Future.delayed(
       const Duration(seconds: 3),
       () {
-        // ignore: use_build_context_synchronously
-        context.pushReplacementNamed(Routes.homeView);
+        isUserLoggedIn
+            // ignore: use_build_context_synchronously
+            ? context.pushReplacementNamed(Routes.homeView)
+            // ignore: use_build_context_synchronously
+            : context.pushReplacementNamed(Routes.loginView);
       },
     );
   }
