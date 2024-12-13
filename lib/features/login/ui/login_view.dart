@@ -9,7 +9,6 @@ import 'package:monglish_app/core/widgets/terms_and_conditions_text.dart';
 import 'package:monglish_app/features/login/logic/login_cubit/login_cubit.dart';
 import 'package:monglish_app/features/login/ui/widgets/login_bloc_listener.dart';
 import 'package:monglish_app/features/login/ui/widgets/login_email_and_password_widget.dart';
-import 'package:monglish_app/features/login/ui/widgets/login_view_welcome_texts.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -30,7 +29,10 @@ class LoginView extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  const LoginViewWelcomeTexts(),
+                  Text(
+                    "Hi, Welcome Back!",
+                    style: Styles.font30OrangeBold,
+                  ),
                   verticalSpace(32),
                   Column(
                     children: [
