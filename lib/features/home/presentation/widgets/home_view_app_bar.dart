@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:monglish_app/core/helpers/spacing.dart';
+import 'package:monglish_app/features/home/presentation/widgets/home_profile_picture.dart';
 
 class HomeViewAppBar extends StatelessWidget {
   const HomeViewAppBar({
@@ -33,14 +34,7 @@ class HomeViewAppBar extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              CircleAvatar(
-                backgroundColor: const Color(0xFFFE7700),
-                radius: 26,
-                child: Image.asset(
-                  'assets/images/profile_picture.png',
-                  width: 46,
-                ),
-              ),
+              const HomeProfilePicture(),
             ],
           ),
         ),

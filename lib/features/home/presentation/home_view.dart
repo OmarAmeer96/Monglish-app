@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:monglish_app/core/helpers/spacing.dart';
-import 'package:monglish_app/core/theming/styles.dart';
 import 'package:monglish_app/core/widgets/app_bar_container.dart';
-import 'package:monglish_app/core/widgets/custom_main_button.dart';
+import 'package:monglish_app/features/home/presentation/widgets/home_personal_info.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_view_app_bar.dart';
 
 class HomeView extends StatelessWidget {
@@ -42,21 +41,23 @@ class HomeView extends StatelessWidget {
                 ),
                 child: Padding(
                   padding: EdgeInsets.symmetric(
-                    horizontal: 24.w,
+                    horizontal: 16.w,
+                    vertical: 16.h,
                   ),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Text(
-                          "Hi, Welcome Back!",
-                          style: Styles.font30OrangeBold,
-                        ),
-                        verticalSpace(50),
-                        CustomMainButton(
-                          onPressed: () {},
-                          buttonText: 'Login',
-                        ),
+                        const HomePersonalInfo(),
+                        verticalSpace(16),
+                        const HomePersonalInfo(),
+                        verticalSpace(16),
+                        const HomePersonalInfo(),
+                        verticalSpace(16),
+                        const HomePersonalInfo(),
+                        verticalSpace(16),
+                        const HomePersonalInfo(),
+                        verticalSpace(16),
                       ],
                     ),
                   ),

@@ -40,6 +40,12 @@ class Styles {
     fontFamily: FontFamilyHelper.quicksandBold,
   );
 
+  static TextStyle font16BlackBold = TextStyle(
+    fontSize: 16.sp,
+    color: Colors.black,
+    fontFamily: FontFamilyHelper.quicksandBold,
+  );
+
   static TextStyle font32BlueBold = TextStyle(
       // fontSize: 32.sp,
       // color: ColorsManager.mainBlue,
