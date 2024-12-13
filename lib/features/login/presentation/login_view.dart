@@ -4,10 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:monglish_app/core/helpers/spacing.dart';
 import 'package:monglish_app/core/theming/styles.dart';
+import 'package:monglish_app/core/widgets/app_bar_container.dart';
 import 'package:monglish_app/core/widgets/custom_main_button.dart';
 import 'package:monglish_app/features/login/logic/login_cubit/login_cubit.dart';
-import 'package:monglish_app/features/login/ui/widgets/login_bloc_listener.dart';
-import 'package:monglish_app/features/login/ui/widgets/login_email_and_password_widget.dart';
+import 'package:monglish_app/features/login/presentation/widgets/login_bloc_listener.dart';
+import 'package:monglish_app/features/login/presentation/widgets/login_email_and_password_widget.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -24,20 +25,7 @@ class LoginView extends StatelessWidget {
               top: 0,
               left: 0,
               right: 0,
-              child: Container(
-                width: double.infinity,
-                height: 152.h,
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment(0.00, -1.00),
-                    end: Alignment(0, 1),
-                    colors: [
-                      Color(0xFF081026),
-                      Color(0xFF1E3B8C),
-                      Color(0xFF081026)
-                    ],
-                  ),
-                ),
+              child: AppBarContainer(
                 child: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:monglish_app/core/helpers/constants.dart';
 import 'package:monglish_app/core/helpers/extensions.dart';
 import 'package:monglish_app/core/routing/routes.dart';
-import 'package:monglish_app/features/splash/views/widgets/fading_logo.dart';
-import 'package:monglish_app/features/splash/views/widgets/sliding_text.dart';
+import 'package:monglish_app/features/splash/presentation/widgets/fading_logo.dart';
+import 'package:monglish_app/features/splash/presentation/widgets/sliding_text.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});

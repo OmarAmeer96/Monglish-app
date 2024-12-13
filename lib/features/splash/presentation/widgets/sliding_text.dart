@@ -23,7 +23,7 @@ class SlidingText extends StatelessWidget {
           child: Opacity(
             opacity: opacityAnimation.value,
             child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 10),
+              padding: const EdgeInsets.symmetric(vertical: 6),
               color: ColorsManager.mainOrange,
               child: Text(
                 "Your Path to Fluency",
