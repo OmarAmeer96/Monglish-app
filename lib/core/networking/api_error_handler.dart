@@ -161,6 +161,7 @@ ApiErrorModel _handleError(DioException error) {
       return DataSource.DEFAULT.getFailure();
     case DioExceptionType.badCertificate:
       return DataSource.DEFAULT.getFailure();
+    // ignore: unreachable_switch_case
     case DioExceptionType.badResponse:
       return DataSource.DEFAULT.getFailure();
   }

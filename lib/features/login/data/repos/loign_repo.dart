@@ -2,7 +2,7 @@ import 'package:monglish_app/core/networking/api_error_handler.dart';
 import 'package:monglish_app/core/networking/api_result.dart';
 import 'package:monglish_app/core/networking/api_service.dart';
 import 'package:monglish_app/features/login/data/models/login_request_body.dart';
-import 'package:monglish_app/features/login/data/models/login_response.dart';
+import 'package:monglish_app/features/login/data/models/login_response/login_response.dart';
 
 class LoginRepo {
   final ApiService _apiServices;
