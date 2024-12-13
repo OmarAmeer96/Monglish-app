@@ -33,7 +33,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
   @override
   Widget build(BuildContext context) {
-    return Container(Handled the navigation
+    return Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment(0.00, 1.00),
