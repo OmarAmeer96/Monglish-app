@@ -62,7 +62,7 @@ class CustomMainTextFormFiels extends StatelessWidget {
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(16.r),
               borderSide: const BorderSide(
-                color: ColorsManager.mainBlue,
+                color: ColorsManager.mainOrange,
                 width: 1.3,
               ),
             ),

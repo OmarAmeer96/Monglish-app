@@ -5,6 +5,7 @@ import 'package:monglish_app/core/routing/routes.dart';
 import 'package:monglish_app/features/home/ui/home_view.dart';
 import 'package:monglish_app/features/login/logic/login_cubit/login_cubit.dart';
 import 'package:monglish_app/features/login/ui/login_view.dart';
+import 'package:monglish_app/features/splash/views/splash_view.dart';
 
 class AppRouter {
   Route? generateRoute(RouteSettings settings) {
@@ -13,10 +14,10 @@ class AppRouter {
     final arguments = settings.arguments;
 
     switch (settings.name) {
-      // case Routes.onBoardingView:
-      //   return MaterialPageRoute(
-      //     builder: (_) => const OnboardingView(),
-      //   );
+      case Routes.splashView:
+        return MaterialPageRoute(
+          builder: (_) => const SplashView(),
+        );
       case Routes.loginView:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
@@ -24,13 +25,6 @@ class AppRouter {
             child: const LoginView(),
           ),
         );
-      // case Routes.signUpScreen:
-      //   return MaterialPageRoute(
-      //     builder: (_) => BlocProvider(
-      //       create: (context) => getIt<SignupCubit>(),
-      //       child: const SignUpView(),
-      //     ),
-      //   );
       // case Routes.homeView:
       //   return MaterialPageRoute(
       //     builder: (_) => BlocProvider(

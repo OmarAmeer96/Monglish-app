@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:monglish_app/core/theming/font_family_helper.dart';
 
 class Styles {
+  static TextStyle font25WhiteBold = TextStyle(
+    color: Colors.white,
+    fontSize: 25.sp,
+    fontFamily: FontFamilyHelper.bold,
+  );
+
   static TextStyle font32BlueBold = TextStyle(
       // fontSize: 32.sp,
       // color: ColorsManager.mainBlue,

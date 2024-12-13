@@ -19,10 +19,11 @@ class MonglishApp extends StatelessWidget {
         title: 'Monglish App',
         onGenerateRoute: appRouter.generateRoute,
         theme: ThemeData(
-          primaryColor: ColorsManager.mainBlue,
+          primaryColor: ColorsManager.mainOrange,
           scaffoldBackgroundColor: Colors.white,
         ),
         initialRoute: isUserLoggedIn ? Routes.homeView : Routes.loginView,
+        // initialRoute: isUserLoggedIn ? Routes.homeView : Routes.splashView,
       ),
     );
   }

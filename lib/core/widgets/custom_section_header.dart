@@ -31,7 +31,7 @@ class CustomSectionHeader extends StatelessWidget {
             'See All',
             style: Styles.font18BlackBold.copyWith(
               fontSize: 13.sp,
-              color: ColorsManager.mainBlue,
+              color: ColorsManager.mainOrange,
               fontFamily: FontFamilyHelper.regular,
             ),
           ),

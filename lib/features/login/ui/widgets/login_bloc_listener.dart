@@ -23,7 +23,7 @@ class LoginBlocListener extends StatelessWidget {
               context: context,
               builder: (context) => const Center(
                 child: CircularProgressIndicator(
-                  color: ColorsManager.mainBlue,
+                  color: ColorsManager.mainOrange,
                 ),
               ),
             );
@@ -55,7 +55,7 @@ class LoginBlocListener extends StatelessWidget {
           error,
           textAlign: TextAlign.center,
           style: Styles.font13GreyBold.copyWith(
-            color: ColorsManager.mainBlue,
+            color: ColorsManager.mainOrange,
             fontSize: 15,
             fontFamily: FontFamilyHelper.medium,
           ),
@@ -68,7 +68,7 @@ class LoginBlocListener extends StatelessWidget {
             child: Text(
               'Got it',
               style: Styles.font13GreyBold.copyWith(
-                color: ColorsManager.mainBlue,
+                color: ColorsManager.mainOrange,
                 fontSize: 15,
                 fontFamily: FontFamilyHelper.bold,
               ),

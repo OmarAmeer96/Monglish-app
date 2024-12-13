@@ -42,7 +42,7 @@ class LoginView extends StatelessWidget {
                           child: Text(
                             'Forgot password?',
                             style: Styles.font13GreyBold.copyWith(
-                              color: ColorsManager.mainBlue,
+                              color: ColorsManager.mainOrange,
                             ),
                           ),
                         ),
