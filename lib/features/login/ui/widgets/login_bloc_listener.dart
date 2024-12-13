@@ -57,7 +57,7 @@ class LoginBlocListener extends StatelessWidget {
           style: Styles.font13GreyBold.copyWith(
             color: ColorsManager.mainOrange,
             fontSize: 15,
-            fontFamily: FontFamilyHelper.medium,
+            fontFamily: FontFamilyHelper.quicksandMedium,
           ),
         ),
         actions: [
@@ -70,7 +70,7 @@ class LoginBlocListener extends StatelessWidget {
               style: Styles.font13GreyBold.copyWith(
                 color: ColorsManager.mainOrange,
                 fontSize: 15,
-                fontFamily: FontFamilyHelper.bold,
+                fontFamily: FontFamilyHelper.quicksandBold,
               ),
             ),
           ),

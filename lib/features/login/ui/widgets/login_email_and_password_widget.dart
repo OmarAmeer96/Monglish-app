@@ -4,7 +4,6 @@ import 'package:monglish_app/core/helpers/app_regex.dart';
 import 'package:monglish_app/core/helpers/spacing.dart';
 import 'package:monglish_app/core/theming/styles.dart';
 import 'package:monglish_app/core/widgets/custom_main_text_form_field.dart';
-import 'package:monglish_app/core/widgets/password_vlaidations.dart';
 import 'package:monglish_app/features/login/logic/login_cubit/login_cubit.dart';
 
 class LoginEmailAndPasswordWidget extends StatefulWidget {
@@ -56,24 +55,48 @@ class _LoginEmailAndPasswordWidgetState
       key: context.read<LoginCubit>().formKey,
       child: Column(
         children: [
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "Email or username",
+              style: Styles.font14BlackMedium.copyWith(
+                color: const Color(0xFF434050),
+              ),
+            ),
+          ),
+          verticalSpace(16),
           CustomMainTextFormFiels(
-            labelText: 'Email',
+            fillColor: Colors.white,
+            hintText: 'Email or username',
             labelStyle: Styles.enabledTextFieldsLabelText,
             isObscureText: false,
             style: Styles.focusedTextFieldsLabelText,
             controller: context.read<LoginCubit>().emailController,
             validator: (value) {
-              if (value!.isEmpty || !AppRegex.isEmailValid(value)) {
+              if (value!.isEmpty) {
                 return 'Please enter your email';
+              } else if (!AppRegex.isEmailValid(value)) {
+                return 'Please enter a valid email';
               }
             },
-            prefixIcon: const Icon(Icons.email_outlined),
+            // prefixIcon: const Icon(Icons.email_outlined),
             focusNode: emailFocusNode,
             nextFocusNode: passwordFocusNode,
           ),
-          verticalSpace(18),
+          verticalSpace(40),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "Password",
+              style: Styles.font14BlackMedium.copyWith(
+                color: const Color(0xFF434050),
+              ),
+            ),
+          ),
+          verticalSpace(16),
           CustomMainTextFormFiels(
-            labelText: 'Password',
+            fillColor: Colors.white,
+            hintText: 'Password',
             labelStyle: Styles.enabledTextFieldsLabelText,
             isObscureText: isObscureText,
             style: Styles.focusedTextFieldsLabelText,
@@ -87,7 +110,7 @@ class _LoginEmailAndPasswordWidgetState
                 isObscureText ? Icons.visibility_off : Icons.visibility,
               ),
             ),
-            prefixIcon: const Icon(Icons.password_rounded),
+            // prefixIcon: const Icon(Icons.password_rounded),
             controller: context.read<LoginCubit>().passwordController,
             validator: (value) {
               if (value!.isEmpty) {
@@ -96,14 +119,14 @@ class _LoginEmailAndPasswordWidgetState
             },
             focusNode: passwordFocusNode,
           ),
-          verticalSpace(18),
-          PasswordValidations(
-            hasLowerCase: hasLowerCase,
-            hasUpperCase: hasUpperCase,
-            hasSpecialCharacters: hasSpecialCharacters,
-            hasNumber: hasNumber,
-            hasMinLength: hasMinLength,
-          ),
+          // verticalSpace(18),
+          // PasswordValidations(
+          //   hasLowerCase: hasLowerCase,
+          //   hasUpperCase: hasUpperCase,
+          //   hasSpecialCharacters: hasSpecialCharacters,
+          //   hasNumber: hasNumber,
+          //   hasMinLength: hasMinLength,
+          // ),
         ],
       ),
     );

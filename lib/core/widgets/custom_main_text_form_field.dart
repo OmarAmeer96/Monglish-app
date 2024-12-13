@@ -10,7 +10,7 @@ class CustomMainTextFormFiels extends StatelessWidget {
     this.enabledBorder,
     this.focusedBorder,
     this.errorBorder,
-    required this.labelText,
+    this.labelText,
     this.labelStyle,
     this.prefixIcon,
     this.suffixIcon,
@@ -21,13 +21,14 @@ class CustomMainTextFormFiels extends StatelessWidget {
     required this.validator,
     this.focusNode,
     this.nextFocusNode,
+    this.hintText,
   });
 
   final EdgeInsetsGeometry? contentPadding;
   final InputBorder? enabledBorder;
   final InputBorder? focusedBorder;
   final InputBorder? errorBorder;
-  final String labelText;
+  final String? labelText;
   final TextStyle? labelStyle;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
@@ -38,6 +39,7 @@ class CustomMainTextFormFiels extends StatelessWidget {
   final Function(String?) validator;
   final FocusNode? focusNode;
   final FocusNode? nextFocusNode;
+  final String? hintText;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +54,7 @@ class CustomMainTextFormFiels extends StatelessWidget {
             ),
         enabledBorder: enabledBorder ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.circular(16.r),
+              borderRadius: BorderRadius.circular(8.r),
               borderSide: const BorderSide(
                 color: ColorsManager.enabledTextFieldColor,
                 width: 1.3,
@@ -60,7 +62,7 @@ class CustomMainTextFormFiels extends StatelessWidget {
             ),
         focusedBorder: focusedBorder ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.circular(16.r),
+              borderRadius: BorderRadius.circular(8.r),
               borderSide: const BorderSide(
                 color: ColorsManager.mainOrange,
                 width: 1.3,
@@ -68,7 +70,7 @@ class CustomMainTextFormFiels extends StatelessWidget {
             ),
         errorBorder: errorBorder ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.circular(16.r),
+              borderRadius: BorderRadius.circular(8.r),
               borderSide: const BorderSide(
                 color: ColorsManager.errorTextFieldColor,
                 width: 1.3,
@@ -76,7 +78,7 @@ class CustomMainTextFormFiels extends StatelessWidget {
             ),
         focusedErrorBorder: errorBorder ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.circular(16.r),
+              borderRadius: BorderRadius.circular(8.r),
               borderSide: const BorderSide(
                 color: ColorsManager.errorTextFieldColor,
                 width: 1.3,
@@ -88,6 +90,10 @@ class CustomMainTextFormFiels extends StatelessWidget {
         suffixIcon: suffixIcon,
         fillColor: fillColor ?? ColorsManager.textFieldFillColor,
         filled: true,
+        hintText: hintText,
+        hintStyle: Styles.font14BlackMedium.copyWith(
+          color: const Color(0x7F434050),
+        ),
       ),
       obscureText: isObscureText ?? false,
       style: style ?? Styles.focusedTextFieldsLabelText,

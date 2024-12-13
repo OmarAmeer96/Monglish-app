@@ -32,7 +32,7 @@ class CustomSectionHeader extends StatelessWidget {
             style: Styles.font18BlackBold.copyWith(
               fontSize: 13.sp,
               color: ColorsManager.mainOrange,
-              fontFamily: FontFamilyHelper.regular,
+              fontFamily: FontFamilyHelper.quicksandRegular,
             ),
           ),
         ),

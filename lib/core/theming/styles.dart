@@ -7,12 +7,37 @@ class Styles {
   static TextStyle font25WhiteBold = TextStyle(
     color: Colors.white,
     fontSize: 25.sp,
-    fontFamily: FontFamilyHelper.bold,
+    fontFamily: FontFamilyHelper.quicksandBold,
   );
+
   static TextStyle font30OrangeBold = TextStyle(
     color: ColorsManager.mainOrange,
     fontSize: 30.sp,
-    fontFamily: FontFamilyHelper.bold,
+    fontFamily: FontFamilyHelper.quicksandBold,
+  );
+
+  static TextStyle font14BlackMedium = TextStyle(
+    color: Colors.black,
+    fontSize: 14.sp,
+    fontFamily: FontFamilyHelper.quicksandMedium,
+  );
+
+  static TextStyle font14BlackRegular = TextStyle(
+    color: Colors.black,
+    fontSize: 14.sp,
+    fontFamily: FontFamilyHelper.quicksandRegular,
+  );
+
+  static TextStyle font14OrangeMedium = TextStyle(
+    color: ColorsManager.mainOrange,
+    fontSize: 14.sp,
+    fontFamily: FontFamilyHelper.montserratMedium,
+  );
+
+  static TextStyle font20WhiteBold = TextStyle(
+    fontSize: 20.sp,
+    color: Colors.white,
+    fontFamily: FontFamilyHelper.quicksandBold,
   );
 
   static TextStyle font32BlueBold = TextStyle(
@@ -26,11 +51,6 @@ class Styles {
       // color: ColorsManager.mainBlack,
       // fontFamily: FontFamilyHelper.bold,
       );
-
-  static TextStyle font18White600 = TextStyle(
-    fontSize: 18.sp,
-    color: Colors.white,
-  );
 
   static TextStyle font13GreyBold = TextStyle(
       // fontSize: 13.sp,

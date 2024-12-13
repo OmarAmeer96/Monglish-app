@@ -32,7 +32,7 @@ class CustomMainButton extends StatelessWidget {
       style: ButtonStyle(
         shape: WidgetStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(borderRadius ?? 16.0),
+            borderRadius: BorderRadius.circular(borderRadius ?? 8.0),
           ),
         ),
         backgroundColor: WidgetStatePropertyAll(
@@ -41,17 +41,17 @@ class CustomMainButton extends StatelessWidget {
         padding: WidgetStateProperty.all<EdgeInsets>(
           EdgeInsets.symmetric(
             horizontal: horizontalPadding?.w ?? 12.w,
-            vertical: verticalPadding?.h ?? 14.h,
+            vertical: verticalPadding?.h ?? 2.h,
           ),
         ),
         fixedSize: WidgetStateProperty.all(
-          Size(buttonWidth?.w ?? double.maxFinite, buttonHeight ?? 52.h),
+          Size(buttonWidth?.w ?? double.maxFinite, buttonHeight ?? 50.h),
         ),
       ),
       onPressed: onPressed,
       child: Text(
         buttonText,
-        style: textStyle ?? Styles.font18White600,
+        style: textStyle ?? Styles.font20WhiteBold,
       ),
     );
   }

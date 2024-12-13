@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:monglish_app/core/helpers/spacing.dart';
-import 'package:monglish_app/core/theming/colors_manager.dart';
 import 'package:monglish_app/core/theming/styles.dart';
 import 'package:monglish_app/core/widgets/custom_main_button.dart';
-import 'package:monglish_app/core/widgets/terms_and_conditions_text.dart';
 import 'package:monglish_app/features/login/logic/login_cubit/login_cubit.dart';
 import 'package:monglish_app/features/login/ui/widgets/login_bloc_listener.dart';
 import 'package:monglish_app/features/login/ui/widgets/login_email_and_password_widget.dart';
@@ -16,56 +15,98 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: Padding(
-            padding: EdgeInsets.only(
-              top: 50.h,
-              left: 24.w,
-              right: 24.w,
-              bottom: 24.h,
-            ),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Text(
-                    "Hi, Welcome Back!",
-                    style: Styles.font30OrangeBold,
+      resizeToAvoidBottomInset: true,
+      body: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: Stack(
+          children: [
+            Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              child: Container(
+                width: double.infinity,
+                height: 152.h,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment(0.00, -1.00),
+                    end: Alignment(0, 1),
+                    colors: [
+                      Color(0xFF081026),
+                      Color(0xFF1E3B8C),
+                      Color(0xFF081026)
+                    ],
                   ),
-                  verticalSpace(32),
-                  Column(
+                ),
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const LoginEmailAndPasswordWidget(),
-                      Align(
-                        alignment: AlignmentDirectional.centerEnd,
-                        child: GestureDetector(
-                          onTap: () {},
-                          child: Text(
-                            'Forgot password?',
-                            style: Styles.font13GreyBold.copyWith(
-                              color: ColorsManager.mainOrange,
+                      verticalSpace(16),
+                      SvgPicture.asset(
+                        'assets/svgs/login_app_logo.svg',
+                        height: 55.h,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              top: 130.h,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: Color(0xfff1f5ff),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(24),
+                    topRight: Radius.circular(24),
+                  ),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 24.w,
+                  ),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        verticalSpace(100),
+                        Text(
+                          "Hi, Welcome Back!",
+                          style: Styles.font30OrangeBold,
+                        ),
+                        verticalSpace(80),
+                        const LoginEmailAndPasswordWidget(),
+                        verticalSpace(20),
+                        Align(
+                          alignment: AlignmentDirectional.centerStart,
+                          child: InkWell(
+                            onTap: () {},
+                            child: Text(
+                              'Forgot password?',
+                              style: Styles.font14OrangeMedium,
                             ),
                           ),
                         ),
-                      ),
-                      verticalSpace(42),
-                      CustomMainButton(
-                        onPressed: () {
-                          validateThenLogin(context);
-                        },
-                        buttonText: 'Login',
-                      ),
-                      verticalSpace(18),
-                      const TermsAndConditionsText(),
-                      verticalSpace(60),
-                      const LoginBlocListener(),
-                    ],
+                        verticalSpace(42),
+                        CustomMainButton(
+                          onPressed: () {
+                            validateThenLogin(context);
+                          },
+                          buttonText: 'Login',
+                        ),
+                        verticalSpace(60),
+                        const LoginBlocListener(),
+                      ],
+                    ),
                   ),
-                ],
+                ),
               ),
             ),
-          ),
+          ],
         ),
       ),
     );

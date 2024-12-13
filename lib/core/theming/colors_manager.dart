@@ -7,6 +7,6 @@ class ColorsManager {
 
   // static const Color enabledTextFieldColor = Color(0xFFFDFDFF);
   static const Color errorTextFieldColor = Color(0xffFF4C5E);
-  static const Color enabledTextFieldColor = Color(0xffC2C2C2);
+  static const Color enabledTextFieldColor = Color(0x7F434050);
   static const Color textFieldFillColor = Color(0xffFDFDFF);
 }
