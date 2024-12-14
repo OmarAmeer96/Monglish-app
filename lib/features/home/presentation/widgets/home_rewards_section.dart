@@ -35,7 +35,7 @@ class HomeRewardsSection extends StatelessWidget {
                     lineHeight: 7.0,
                     percent: 0.60,
                     animation: true,
-                    animationDuration: 10000,
+                    animationDuration: 8000,
                     backgroundColor: const Color(0x3F999999),
                     progressColor: ColorsManager.mainBlue,
                     barRadius: const Radius.circular(50),
