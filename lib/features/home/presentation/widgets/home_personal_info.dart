@@ -62,7 +62,7 @@ class HomePersonalInfo extends StatelessWidget {
               const Row(
                 children: [
                   Expanded(
-                    flex: 4,
+                    flex: 5,
                     child: HomeColoredContainerIconAndTextItem(
                       icon: 'assets/svgs/email_icon.svg',
                       text: "omar.ameer244@gmail.com",
