@@ -6,6 +6,7 @@ import 'package:monglish_app/features/home/presentation/widgets/home_current_lev
 import 'package:monglish_app/features/home/presentation/widgets/home_level_section.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_package_clubs_section.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_personal_info_section.dart';
+import 'package:monglish_app/features/home/presentation/widgets/home_rewards_section.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_view_app_bar.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -110,6 +111,8 @@ class _HomeViewState extends State<HomeView> {
 
                         verticalSpace(16),
                         const HomeLevelSection(),
+                        verticalSpace(16),
+                        const HomeRewardsSection(),
                       ],
                     ),
                   ),
