@@ -130,27 +130,26 @@ class _HomeViewState extends State<HomeView> {
   // Event List Widget
   Widget _buildEventList(DateTime day) {
     final events = _getEventsForDay(day);
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          "Events for ${day.toLocal()}".split(' ')[0],
-          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(height: 8),
-        ...events.map(
-          (event) => Card(
-            color: Colors.orange.shade50,
-            child: Padding(
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ...events.map(
+            (event) => Container(
               padding: const EdgeInsets.all(8.0),
+              decoration: BoxDecoration(
+                color: Colors.orangeAccent,
+                borderRadius: BorderRadius.circular(8),
+              ),
               child: Text(
                 event,
                 style: const TextStyle(fontSize: 14),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
