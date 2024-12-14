@@ -5,8 +5,8 @@ import 'package:monglish_app/features/home/presentation/widgets/home_colored_con
 import 'package:monglish_app/features/home/presentation/widgets/home_profile_picture.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_view_colored_container.dart';
 
-class HomePersonalInfo extends StatelessWidget {
-  const HomePersonalInfo({
+class HomePersonalInfoSection extends StatelessWidget {
+  const HomePersonalInfoSection({
     super.key,
   });
 
@@ -39,7 +39,7 @@ class HomePersonalInfo extends StatelessWidget {
               ),
             ],
           ),
-          verticalSpace(12),
+          verticalSpace(14),
           Column(
             children: [
               const Row(

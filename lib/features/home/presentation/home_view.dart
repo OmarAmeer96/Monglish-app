@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:monglish_app/core/helpers/spacing.dart';
 import 'package:monglish_app/core/widgets/app_bar_container.dart';
-import 'package:monglish_app/features/home/presentation/widgets/home_personal_info.dart';
+import 'package:monglish_app/features/home/presentation/widgets/home_current_level_section.dart';
+import 'package:monglish_app/features/home/presentation/widgets/home_personal_info_section.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_view_app_bar.dart';
 
 class HomeView extends StatelessWidget {
@@ -50,15 +51,9 @@ class HomeView extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        const HomePersonalInfo(),
+                        const HomePersonalInfoSection(),
                         verticalSpace(16),
-                        const HomePersonalInfo(),
-                        verticalSpace(16),
-                        const HomePersonalInfo(),
-                        verticalSpace(16),
-                        const HomePersonalInfo(),
-                        verticalSpace(16),
-                        const HomePersonalInfo(),
+                        const HomeCurrentLevelSection(),
                         verticalSpace(16),
                       ],
                     ),
