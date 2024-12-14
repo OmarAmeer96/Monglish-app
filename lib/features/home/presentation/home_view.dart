@@ -3,11 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:monglish_app/core/helpers/spacing.dart';
 import 'package:monglish_app/core/widgets/app_bar_container.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_current_level_section.dart';
+import 'package:monglish_app/features/home/presentation/widgets/home_feed_back_section.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_level_section.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_package_clubs_section.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_personal_info_section.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_rewards_section.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_view_app_bar.dart';
+import 'package:monglish_app/features/home/presentation/widgets/home_view_colored_container.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class HomeView extends StatefulWidget {
@@ -62,62 +64,70 @@ class _HomeViewState extends State<HomeView> {
                     right: 16,
                     top: 16,
                   ),
-                  child: SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    child: Column(
-                      children: [
-                        const HomePersonalInfoSection(),
-                        verticalSpace(16),
-                        const HomeCurrentLevelSection(),
-                        verticalSpace(16),
-                        const HomePackageClubsSection(),
-                        verticalSpace(16),
+                  child: Scrollbar(
+                    child: SingleChildScrollView(
+                      physics: const BouncingScrollPhysics(),
+                      child: Column(
+                        children: [
+                          const HomePersonalInfoSection(),
+                          verticalSpace(16),
+                          const HomeCurrentLevelSection(),
+                          verticalSpace(16),
+                          const HomePackageClubsSection(),
+                          verticalSpace(16),
 
-                        // Table Calendar
-                        TableCalendar(
-                          firstDay: DateTime.utc(2024, 1, 1),
-                          lastDay: DateTime.utc(2025, 12, 31),
-                          focusedDay: _focusedDay,
-                          calendarFormat: _calendarFormat,
-                          selectedDayPredicate: (day) =>
-                              isSameDay(_selectedDay, day),
-                          eventLoader: _getEventsForDay,
-                          calendarStyle: const CalendarStyle(
-                            todayDecoration: BoxDecoration(
-                              color: Colors.orangeAccent,
-                              shape: BoxShape.circle,
-                            ),
-                            selectedDecoration: BoxDecoration(
-                              color: Colors.blueAccent,
-                              shape: BoxShape.circle,
+                          // Table Calendar
+                          HomeViewColoredContainer(
+                            color: const Color(0xFFFFFFFF),
+                            child: TableCalendar(
+                              firstDay: DateTime.utc(2024, 1, 1),
+                              lastDay: DateTime.utc(2025, 12, 31),
+                              focusedDay: _focusedDay,
+                              calendarFormat: _calendarFormat,
+                              selectedDayPredicate: (day) =>
+                                  isSameDay(_selectedDay, day),
+                              eventLoader: _getEventsForDay,
+                              calendarStyle: const CalendarStyle(
+                                todayDecoration: BoxDecoration(
+                                  color: Colors.orangeAccent,
+                                  shape: BoxShape.circle,
+                                ),
+                                selectedDecoration: BoxDecoration(
+                                  color: Colors.blueAccent,
+                                  shape: BoxShape.circle,
+                                ),
+                              ),
+                              onDaySelected: (selectedDay, focusedDay) {
+                                setState(() {
+                                  _selectedDay = selectedDay;
+                                  _focusedDay = focusedDay;
+                                });
+                              },
+                              onFormatChanged: (format) {
+                                setState(() {
+                                  _calendarFormat = format;
+                                });
+                              },
+                              onPageChanged: (focusedDay) {
+                                _focusedDay = focusedDay;
+                              },
                             ),
                           ),
-                          onDaySelected: (selectedDay, focusedDay) {
-                            setState(() {
-                              _selectedDay = selectedDay;
-                              _focusedDay = focusedDay;
-                            });
-                          },
-                          onFormatChanged: (format) {
-                            setState(() {
-                              _calendarFormat = format;
-                            });
-                          },
-                          onPageChanged: (focusedDay) {
-                            _focusedDay = focusedDay;
-                          },
-                        ),
-                        verticalSpace(16),
+                          verticalSpace(16),
 
-                        // Event List Section
-                        if (_selectedDay != null)
-                          _buildEventList(_selectedDay!),
+                          // Event List Section
+                          if (_selectedDay != null)
+                            _buildEventList(_selectedDay!),
 
-                        verticalSpace(16),
-                        const HomeLevelSection(),
-                        verticalSpace(16),
-                        const HomeRewardsSection(),
-                      ],
+                          verticalSpace(16),
+                          const HomeLevelSection(),
+                          verticalSpace(16),
+                          const HomeRewardsSection(),
+                          verticalSpace(16),
+                          const HomeFeedbackSection(),
+                          verticalSpace(32),
+                        ],
+                      ),
                     ),
                   ),
                 ),
