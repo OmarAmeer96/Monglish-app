@@ -60,6 +60,7 @@ class HomeView extends StatelessWidget {
                         const HomePackageClubsSection(),
                         verticalSpace(16),
                         // Here is the Calendar Section-----------------
+                        verticalSpace(16),
                         const HomeLevelSection(),
                         verticalSpace(16),
                       ],
