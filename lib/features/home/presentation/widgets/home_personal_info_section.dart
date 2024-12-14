@@ -47,13 +47,13 @@ class HomePersonalInfoSection extends StatelessWidget {
                   Expanded(
                     child: HomeColoredContainerIconAndTextItem(
                       icon: 'assets/svgs/phone_icon.svg',
-                      text: "+20 15 5411 1002",
+                      title: "+20 15 5411 1002",
                     ),
                   ),
                   Expanded(
                     child: HomeColoredContainerIconAndTextItem(
                       icon: 'assets/svgs/birth_icon.svg',
-                      text: "26/8/2002",
+                      title: "26/8/2002",
                     ),
                   )
                 ],
@@ -65,21 +65,21 @@ class HomePersonalInfoSection extends StatelessWidget {
                     flex: 5,
                     child: HomeColoredContainerIconAndTextItem(
                       icon: 'assets/svgs/email_icon.svg',
-                      text: "omar.ameer244@gmail.com",
+                      title: "omar.ameer244@gmail.com",
                     ),
                   ),
                   Expanded(
                     flex: 3,
                     child: HomeColoredContainerIconAndTextItem(
                       icon: 'assets/svgs/nationality_icon.svg',
-                      text: "Egyptian",
+                      title: "Egyptian",
                     ),
                   ),
                   Expanded(
                     flex: 2,
                     child: HomeColoredContainerIconAndTextItem(
                       icon: 'assets/svgs/gender_icon.svg',
-                      text: "Male",
+                      title: "Male",
                     ),
                   ),
                 ],

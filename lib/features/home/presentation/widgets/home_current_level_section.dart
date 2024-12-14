@@ -25,7 +25,7 @@ class HomeCurrentLevelSection extends StatelessWidget {
               ),
             ],
           ),
-          verticalSpace(19),
+          verticalSpace(12),
           Column(
             children: [
               const Row(
@@ -33,13 +33,13 @@ class HomeCurrentLevelSection extends StatelessWidget {
                   Expanded(
                     child: HomeColoredContainerIconAndTextItem(
                       icon: 'assets/svgs/current_level_icon.svg',
-                      text: "LG Kids - Juniors - Level 2",
+                      title: "LG Kids - Juniors - Level 2",
                     ),
                   ),
                   Expanded(
                     child: HomeColoredContainerIconAndTextItem(
                       icon: 'assets/svgs/remaining_levels_icon.svg',
-                      text: "2 Remaining Levels",
+                      title: "2 Remaining Levels",
                     ),
                   )
                 ],
@@ -50,13 +50,13 @@ class HomeCurrentLevelSection extends StatelessWidget {
                   Expanded(
                     child: HomeColoredContainerIconAndTextItem(
                       icon: 'assets/svgs/status_icon.svg',
-                      text: "Active",
+                      title: "Active",
                     ),
                   ),
                   Expanded(
                     child: HomeColoredContainerIconAndTextItem(
                       icon: 'assets/svgs/expire_date_icon.svg',
-                      text: "Old Package expires on 16/12/2024",
+                      title: "Old Package expires on 16/12/2024",
                     ),
                   ),
                 ],
