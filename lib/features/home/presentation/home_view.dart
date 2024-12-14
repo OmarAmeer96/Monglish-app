@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:monglish_app/core/helpers/spacing.dart';
 import 'package:monglish_app/core/widgets/app_bar_container.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_current_level_section.dart';
+import 'package:monglish_app/features/home/presentation/widgets/home_level_section.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_package_clubs_section.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_personal_info_section.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_view_app_bar.dart';
@@ -57,6 +58,9 @@ class HomeView extends StatelessWidget {
                         const HomeCurrentLevelSection(),
                         verticalSpace(16),
                         const HomePackageClubsSection(),
+                        verticalSpace(16),
+                        // Here is the Calendar Section-----------------
+                        const HomeLevelSection(),
                         verticalSpace(16),
                       ],
                     ),
