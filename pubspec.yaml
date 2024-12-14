@@ -66,11 +66,10 @@ dependencies:
   # An easy way to add shimmer effect in Flutter project.
   shimmer: ^3.0.0
   persistent_bottom_nav_bar: ^6.2.1
-  # Flutter Calendar widget.
-  syncfusion_flutter_calendar: ^28.1.33 # table_calendar: ^3.1.3
-  # A highly customizable Flutter chart library.
+  # Flutter Calendars, Charts, Gauges.
+  syncfusion_flutter_calendar: ^28.1.33
+  table_calendar: ^3.1.3
   fl_chart: ^0.69.2
-  # Flutter gauges library.
   syncfusion_flutter_gauges: ^28.1.33
 
 dev_dependencies:

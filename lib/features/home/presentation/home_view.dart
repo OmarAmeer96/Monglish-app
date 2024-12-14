@@ -7,14 +7,29 @@ import 'package:monglish_app/features/home/presentation/widgets/home_level_secti
 import 'package:monglish_app/features/home/presentation/widgets/home_package_clubs_section.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_personal_info_section.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_view_app_bar.dart';
+import 'package:table_calendar/table_calendar.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({super.key});
+
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  CalendarFormat _calendarFormat = CalendarFormat.month; // Calendar view format
+  DateTime _focusedDay = DateTime.now();
+  DateTime? _selectedDay;
+
+  // Event Map: Date as Key, List of Events as Value
+  final Map<DateTime, List<String>> _events = {
+    DateTime.utc(2024, 12, 3): ['Reading Club at 5 PM'],
+    DateTime.utc(2024, 12, 11): ['Movie Club at 5 PM'],
+  };
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: true,
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Stack(
@@ -24,9 +39,7 @@ class HomeView extends StatelessWidget {
               left: 0,
               right: 0,
               child: AppBarContainer(
-                child: Center(
-                  child: HomeViewAppBar(),
-                ),
+                child: Center(child: HomeViewAppBar()),
               ),
             ),
             Positioned(
@@ -43,15 +56,10 @@ class HomeView extends StatelessWidget {
                   ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.only(
-                    left: 16,
-                    right: 16,
-                    top: 16,
-                  ),
+                  padding: const EdgeInsets.all(16),
                   child: SingleChildScrollView(
                     physics: const BouncingScrollPhysics(),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         const HomePersonalInfoSection(),
                         verticalSpace(16),
@@ -59,10 +67,49 @@ class HomeView extends StatelessWidget {
                         verticalSpace(16),
                         const HomePackageClubsSection(),
                         verticalSpace(16),
-                        // Here is the Calendar Section-----------------
+
+                        // Table Calendar
+                        TableCalendar(
+                          firstDay: DateTime.utc(2024, 1, 1),
+                          lastDay: DateTime.utc(2025, 12, 31),
+                          focusedDay: _focusedDay,
+                          calendarFormat: _calendarFormat,
+                          selectedDayPredicate: (day) =>
+                              isSameDay(_selectedDay, day),
+                          eventLoader: _getEventsForDay,
+                          calendarStyle: const CalendarStyle(
+                            todayDecoration: BoxDecoration(
+                              color: Colors.orangeAccent,
+                              shape: BoxShape.circle,
+                            ),
+                            selectedDecoration: BoxDecoration(
+                              color: Colors.blueAccent,
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                          onDaySelected: (selectedDay, focusedDay) {
+                            setState(() {
+                              _selectedDay = selectedDay;
+                              _focusedDay = focusedDay;
+                            });
+                          },
+                          onFormatChanged: (format) {
+                            setState(() {
+                              _calendarFormat = format;
+                            });
+                          },
+                          onPageChanged: (focusedDay) {
+                            _focusedDay = focusedDay;
+                          },
+                        ),
+                        verticalSpace(16),
+
+                        // Event List Section
+                        if (_selectedDay != null)
+                          _buildEventList(_selectedDay!),
+
                         verticalSpace(16),
                         const HomeLevelSection(),
-                        verticalSpace(16),
                       ],
                     ),
                   ),
@@ -72,6 +119,38 @@ class HomeView extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  // Function to Load Events for a Given Day
+  List<String> _getEventsForDay(DateTime day) {
+    return _events[DateTime.utc(day.year, day.month, day.day)] ?? [];
+  }
+
+  // Event List Widget
+  Widget _buildEventList(DateTime day) {
+    final events = _getEventsForDay(day);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Events for ${day.toLocal()}".split(' ')[0],
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 8),
+        ...events.map(
+          (event) => Card(
+            color: Colors.orange.shade50,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                event,
+                style: const TextStyle(fontSize: 14),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
