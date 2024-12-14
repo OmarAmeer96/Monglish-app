@@ -38,8 +38,8 @@ class HomeView extends StatelessWidget {
                 decoration: const BoxDecoration(
                   color: Color(0xfff1f5ff),
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20),
+                    topLeft: Radius.circular(16),
+                    topRight: Radius.circular(16),
                   ),
                 ),
                 child: Padding(
