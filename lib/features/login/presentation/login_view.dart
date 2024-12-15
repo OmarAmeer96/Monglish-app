@@ -81,6 +81,9 @@ class LoginView extends StatelessWidget {
                         ),
                         verticalSpace(42),
                         CustomMainButton(
+                          textStyle: Styles.font20WhiteBold.copyWith(
+                            fontSize: 20,
+                          ),
                           onPressed: () {
                             validateThenLogin(context);
                           },
