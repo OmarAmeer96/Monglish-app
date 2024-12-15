@@ -52,9 +52,9 @@ class Styles {
     fontFamily: FontFamilyHelper.quicksandRegular,
   );
 
-  static TextStyle font14BoldBottomNav = TextStyle(
-    color: const Color(0xFF999999),
-    fontSize: 14.sp,
+  static TextStyle font14BoldBottomNav = const TextStyle(
+    color: Color(0xFF999999),
+    fontSize: 14,
     fontFamily: FontFamilyHelper.quicksandBold,
   );
 
