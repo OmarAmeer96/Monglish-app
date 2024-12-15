@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:monglish_app/core/helpers/spacing.dart';
 import 'package:monglish_app/core/theming/colors_manager.dart';
 import 'package:monglish_app/features/login/presentation/widgets/custom_bottom_nav_bar_icon.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
@@ -158,6 +160,7 @@ class _MainViewState extends State<MainView> {
           ),
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             // const UserAccountsDrawerHeader(
             //   decoration: BoxDecoration(color: Color(0xFF0A369D)),
@@ -168,16 +171,30 @@ class _MainViewState extends State<MainView> {
             //         AssetImage('assets/images/profile_picture.png'),
             //   ),
             // ),
+            verticalSpace(60),
+            Container(
+              width: MediaQuery.of(context).size.width * 0.94,
+              height: 83,
+              decoration: const ShapeDecoration(
+                shape: RoundedRectangleBorder(
+                  side: BorderSide(
+                    width: 1,
+                    color: Colors.white,
+                  ),
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(100),
+                    topLeft: Radius.circular(100),
+                  ),
+                ),
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.all(50.0),
               child: IconButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                icon: const Icon(
-                  Icons.close,
-                  color: Colors.white,
-                ),
+                icon: SvgPicture.asset('assets/svgs/close_icon.svg'),
               ),
             ),
             ListTile(

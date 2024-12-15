@@ -126,7 +126,7 @@ class _HomeViewState extends State<HomeView> {
                           const HomeRewardsSection(),
                           verticalSpace(16),
                           const HomeFeedbackSection(),
-                          verticalSpace(32),
+                          verticalSpace(12),
                         ],
                       ),
                     ),
