@@ -7,6 +7,9 @@ class ColorsManager {
   static const Color mainGrey = Color(0xFF757575);
   static const Color mainBlack = Color(0xFF242424);
 
+  static const Color mainGradientColorTopAndBottom = Color(0xFF001741);
+  static const Color mainGradientColorMid = Color(0xFF2B4BAB);
+
   // static const Color enabledTextFieldColor = Color(0xFFFDFDFF);
   static const Color errorTextFieldColor = Color(0xffFF4C5E);
   static const Color enabledTextFieldColor = Color(0x7F434050);

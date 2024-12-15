@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:monglish_app/core/helpers/constants.dart';
 import 'package:monglish_app/core/helpers/extensions.dart';
 import 'package:monglish_app/core/routing/routes.dart';
+import 'package:monglish_app/core/theming/colors_manager.dart';
 import 'package:monglish_app/features/splash/presentation/widgets/fading_logo.dart';
 import 'package:monglish_app/features/splash/presentation/widgets/sliding_text.dart';
 
@@ -39,9 +40,9 @@ class _SplashViewBodyState extends State<SplashViewBody>
           begin: Alignment(0.00, 1.00),
           end: Alignment(0, -1),
           colors: [
-            Color(0xFF001741),
-            Color(0xFF2B4BAB),
-            Color(0xFF001741),
+            ColorsManager.mainGradientColorTopAndBottom,
+            ColorsManager.mainGradientColorMid,
+            ColorsManager.mainGradientColorTopAndBottom,
           ],
         ),
       ),
