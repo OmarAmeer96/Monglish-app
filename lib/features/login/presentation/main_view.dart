@@ -3,6 +3,7 @@ import 'package:monglish_app/features/login/presentation/widgets/custom_bottom_n
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:monglish_app/features/home/presentation/home_view.dart';
 
+// ignore: must_be_immutable
 class MainView extends StatelessWidget {
   MainView({super.key});
 
@@ -32,9 +33,9 @@ class MainView extends StatelessWidget {
           text: 'More',
           isActiveIcon: false,
         ),
-        onPressed: (p0) {
-          debugPrint('More Pressed');
-        },
+        // onPressed: (p0) {
+        //   debugPrint('More Pressed, ${_controller.index}');
+        // },
       ),
       PersistentBottomNavBarItem(
         icon: const CustomBottomNavBarIcon(

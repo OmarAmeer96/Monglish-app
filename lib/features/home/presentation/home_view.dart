@@ -62,13 +62,14 @@ class _HomeViewState extends State<HomeView> {
                   padding: const EdgeInsets.only(
                     left: 16,
                     right: 16,
-                    top: 16,
+                    top: 0,
                   ),
                   child: Scrollbar(
                     child: SingleChildScrollView(
                       physics: const BouncingScrollPhysics(),
                       child: Column(
                         children: [
+                          verticalSpace(16),
                           const HomePersonalInfoSection(),
                           verticalSpace(16),
                           const HomeCurrentLevelSection(),
