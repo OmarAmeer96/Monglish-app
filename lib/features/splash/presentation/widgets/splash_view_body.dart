@@ -96,7 +96,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
       () {
         isUserLoggedIn
             // ignore: use_build_context_synchronously
-            ? context.pushReplacementNamed(Routes.homeView)
+            ? context.pushReplacementNamed(Routes.mainView)
             // ignore: use_build_context_synchronously
             : context.pushReplacementNamed(Routes.loginView);
       },

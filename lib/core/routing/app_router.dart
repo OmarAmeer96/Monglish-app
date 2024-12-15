@@ -5,6 +5,7 @@ import 'package:monglish_app/core/routing/routes.dart';
 import 'package:monglish_app/features/home/presentation/home_view.dart';
 import 'package:monglish_app/features/login/logic/login_cubit/login_cubit.dart';
 import 'package:monglish_app/features/login/presentation/login_view.dart';
+import 'package:monglish_app/features/login/presentation/main_view.dart';
 import 'package:monglish_app/features/splash/presentation/splash_view.dart';
 
 class AppRouter {
@@ -32,6 +33,10 @@ class AppRouter {
       //       child: const HomeView(),
       //     ),
       //   );
+      case Routes.mainView:
+        return MaterialPageRoute(
+          builder: (_) => MainView(),
+        );
       case Routes.homeView:
         return MaterialPageRoute(
           builder: (_) => const HomeView(),

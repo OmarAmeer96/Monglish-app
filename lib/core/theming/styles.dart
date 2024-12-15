@@ -52,6 +52,12 @@ class Styles {
     fontFamily: FontFamilyHelper.quicksandRegular,
   );
 
+  static TextStyle font14BoldBottomNav = const TextStyle(
+    color: Color(0xFF999999),
+    fontSize: 14,
+    fontFamily: FontFamilyHelper.quicksandMedium,
+  );
+
   static TextStyle font32BlueBold = TextStyle(
       // fontSize: 32.sp,
       // color: ColorsManager.mainBlue,
