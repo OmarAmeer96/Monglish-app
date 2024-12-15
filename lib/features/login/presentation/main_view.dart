@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:monglish_app/core/helpers/spacing.dart';
 import 'package:monglish_app/core/theming/colors_manager.dart';
+import 'package:monglish_app/core/theming/font_family_helper.dart';
+import 'package:monglish_app/core/theming/styles.dart';
 import 'package:monglish_app/features/login/presentation/widgets/custom_bottom_nav_bar_icon.dart';
+import 'package:monglish_app/features/login/presentation/widgets/custom_dashed_divider.dart';
+import 'package:monglish_app/features/login/presentation/widgets/drawer_item.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:monglish_app/features/home/presentation/home_view.dart';
 
@@ -159,134 +163,182 @@ class _MainViewState extends State<MainView> {
             ],
           ),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
+        child: Stack(
           children: [
-            // const UserAccountsDrawerHeader(
-            //   decoration: BoxDecoration(color: Color(0xFF0A369D)),
-            //   accountName: Text("Ahmed Mohamed"),
-            //   accountEmail: Text("29501"),
-            //   currentAccountPicture: CircleAvatar(
-            //     backgroundImage:
-            //         AssetImage('assets/images/profile_picture.png'),
-            //   ),
-            // ),
-            verticalSpace(60),
-            Container(
-              width: MediaQuery.of(context).size.width * 0.94,
-              height: 83,
-              decoration: const ShapeDecoration(
-                shape: RoundedRectangleBorder(
-                  side: BorderSide(
-                    width: 1,
-                    color: Colors.white,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                // const UserAccountsDrawerHeader(
+                //   decoration: BoxDecoration(color: Color(0xFF0A369D)),
+                //   accountName: Text("Ahmed Mohamed"),
+                //   accountEmail: Text("29501"),
+                //   currentAccountPicture: CircleAvatar(
+                //     backgroundImage:
+                //         AssetImage('assets/images/profile_picture.png'),
+                //   ),
+                // ),
+                const SizedBox(height: 60),
+                Container(
+                  padding: const EdgeInsets.all(6),
+                  width: MediaQuery.of(context).size.width * 0.94,
+                  height: 80,
+                  decoration: const ShapeDecoration(
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                        width: 1,
+                        color: Colors.white,
+                      ),
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(100),
+                        topLeft: Radius.circular(100),
+                      ),
+                    ),
                   ),
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(100),
-                    topLeft: Radius.circular(100),
+                  child: Row(
+                    children: [
+                      CircleAvatar(
+                        backgroundColor: const Color(0xFFFE7700),
+                        radius: 33,
+                        child: Image.asset(
+                          'assets/images/profile_picture.png',
+                          width: 60,
+                        ),
+                      ),
+                      horizontalSpace(10),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Omar Ameer",
+                            style: Styles.font15WhiteBold,
+                          ),
+                          verticalSpace(8),
+                          Text(
+                            "5545",
+                            style: Styles.font15WhiteBold.copyWith(
+                              color: Colors.white.withOpacity(0.5),
+                              fontFamily: FontFamilyHelper.montserratRegular,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
-              ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Expanded(
+                    child: Column(
+                      children: [
+                        verticalSpace(60),
+                        DrawerItem(
+                          icon: 'assets/svgs/drawer_dashboard_icon.svg',
+                          title: 'Dashboard',
+                          onTap: () {
+                            debugPrint("Dashboard Clicked");
+                          },
+                        ),
+                        verticalSpace(18),
+                        const CustomDashedDivider(),
+                        verticalSpace(18),
+                        DrawerItem(
+                          icon: 'assets/svgs/drawer_schools_icon.svg',
+                          title: 'Schools',
+                          onTap: () {
+                            debugPrint("Classes Clicked");
+                          },
+                        ),
+                        verticalSpace(18),
+                        const CustomDashedDivider(),
+                        verticalSpace(18),
+                        DrawerItem(
+                          icon: 'assets/svgs/drawer_classes_icon.svg',
+                          title: 'Classes',
+                          onTap: () {
+                            debugPrint("Classes Clicked");
+                          },
+                        ),
+                        verticalSpace(18),
+                        const CustomDashedDivider(),
+                        verticalSpace(18),
+                        DrawerItem(
+                          icon: 'assets/svgs/drawer_clubs_icon.svg',
+                          title: 'Clubs',
+                          onTap: () {
+                            debugPrint("Clubs Clicked");
+                          },
+                        ),
+                        verticalSpace(18),
+                        const CustomDashedDivider(),
+                        verticalSpace(18),
+                        DrawerItem(
+                          icon: 'assets/svgs/drawer_payments_icon.svg',
+                          title: 'Payments',
+                          onTap: () {
+                            debugPrint("Payments Clicked");
+                          },
+                        ),
+                        verticalSpace(18),
+                        const CustomDashedDivider(),
+                        verticalSpace(18),
+                        DrawerItem(
+                          icon: 'assets/svgs/drawer_discussion_icon.svg',
+                          title: 'Discussion',
+                          onTap: () {
+                            debugPrint("Discussion Clicked");
+                          },
+                        ),
+                        verticalSpace(18),
+                        const CustomDashedDivider(),
+                        verticalSpace(18),
+                        DrawerItem(
+                          icon: 'assets/svgs/drawer_settings_icon.svg',
+                          title: 'Settings',
+                          onTap: () {
+                            debugPrint("Settings Clicked");
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.all(50.0),
-              child: IconButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                icon: SvgPicture.asset('assets/svgs/close_icon.svg'),
-              ),
-            ),
-            ListTile(
-              leading: const Icon(
-                Icons.dashboard,
-                color: Colors.white,
-              ),
-              title: const Text(
-                "Dashboard",
-                style: TextStyle(
-                  color: Colors.white,
+            Positioned(
+              right: 0,
+              top: 0,
+              bottom: 0,
+              child: Container(
+                width: 54,
+                decoration: const BoxDecoration(
+                  color: ColorsManager.mainOrange,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const SizedBox(height: 60 + 40 - 11),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: SvgPicture.asset(
+                        'assets/svgs/close_icon.svg',
+                        height: 20,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              onTap: () {},
             ),
-            ListTile(
-              leading: const Icon(
-                Icons.school,
-                color: Colors.white,
+            Positioned(
+              bottom: 0,
+              right: 56,
+              child: SvgPicture.asset(
+                'assets/svgs/drawer_letters.svg',
+                width: 120,
               ),
-              title: const Text(
-                "Schools",
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-              onTap: () {},
-            ),
-            ListTile(
-              leading: const Icon(
-                Icons.class_,
-                color: Colors.white,
-              ),
-              title: const Text(
-                "Classes",
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-              onTap: () {},
-            ),
-            ListTile(
-              leading: const Icon(
-                Icons.group,
-                color: Colors.white,
-              ),
-              title: const Text(
-                "Clubs",
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-              onTap: () {},
-            ),
-            ListTile(
-              leading: const Icon(
-                Icons.payment,
-                color: Colors.white,
-              ),
-              title: const Text(
-                "Payments",
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-              onTap: () {},
-            ),
-            ListTile(
-              leading: const Icon(
-                Icons.chat,
-                color: Colors.white,
-              ),
-              title: const Text(
-                "Discussion",
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-              onTap: () {},
-            ),
-            ListTile(
-              leading: const Icon(
-                Icons.settings,
-                color: Colors.white,
-              ),
-              title: const Text(
-                "Settings",
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-              onTap: () {},
             ),
           ],
         ),

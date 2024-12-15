@@ -58,6 +58,12 @@ class Styles {
     fontFamily: FontFamilyHelper.quicksandBold,
   );
 
+  static TextStyle font15WhiteBold = TextStyle(
+    color: Colors.white,
+    fontSize: 15.sp,
+    fontFamily: FontFamilyHelper.montserratBold,
+  );
+
   static TextStyle font32BlueBold = TextStyle(
       // fontSize: 32.sp,
       // color: ColorsManager.mainBlue,
