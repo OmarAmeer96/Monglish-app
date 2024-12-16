@@ -31,27 +31,27 @@ class StudentsCubit extends Cubit<StudentsState> {
       emit(const StudentsState.loading());
     }
     final response = await _productsRepo.getProducts(_limit, _skip);
-    response.when(
-      success: (productsModelResponse) {
-        _skip += _limit;
-        if (productsModelResponse.products!.length < _limit) {
-          hasReachedEnd = true;
-        }
-        if (state is Success) {
-          final oldProducts = (state as Success).data.products;
-          final newProducts = oldProducts + productsModelResponse.products!;
-          emit(StudentsState.success(
-              productsModelResponse.copyWith(products: newProducts)));
-        } else {
-          emit(StudentsState.success(productsModelResponse));
-        }
-      },
-      failure: (error) {
-        emit(
-          StudentsState.error(
-              error: error.apiErrorModel.message ?? 'Something went wrong!'),
-        );
-      },
-    );
+    // response.when(
+    //   success: (productsModelResponse) {
+    //     _skip += _limit;
+    //     if (productsModelResponse.products!.length < _limit) {
+    //       hasReachedEnd = true;
+    //     }
+    //     if (state is Success) {
+    //       final oldProducts = (state as Success).data.products;
+    //       final newProducts = oldProducts + productsModelResponse.products!;
+    //       emit(StudentsState.success(
+    //           productsModelResponse.copyWith(products: newProducts)));
+    //     } else {
+    //       emit(StudentsState.success(productsModelResponse));
+    //     }
+    //   },
+    //   failure: (error) {
+    //     emit(
+    //       StudentsState.error(
+    //           error: error.apiErrorModel.message ?? 'Something went wrong!'),
+    //     );
+    //   },
+    // );
   }
 }
