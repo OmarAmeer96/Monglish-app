@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:monglish_app/core/helpers/spacing.dart';
+import 'package:monglish_app/core/theming/colors_manager.dart';
+import 'package:monglish_app/core/theming/styles.dart';
 import 'package:monglish_app/core/widgets/app_bar_container.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_current_level_section.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_feed_back_section.dart';
@@ -150,26 +152,70 @@ class _HomeViewState extends State<HomeView> {
   // Event List Widget
   Widget _buildEventList(DateTime day) {
     final events = _getEventsForDay(day);
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ...events.map(
-            (event) => Container(
-              padding: const EdgeInsets.all(8.0),
-              decoration: BoxDecoration(
-                color: Colors.orangeAccent,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Text(
-                event,
-                style: const TextStyle(fontSize: 14),
+
+    return AnimatedSwitcher(
+      duration: const Duration(milliseconds: 400), // Animation duration
+      switchInCurve: Curves.easeIn, // Curve for appearing animation
+      switchOutCurve: Curves.easeOut, // Curve for disappearing animation
+      child: events.isEmpty
+          ? const SizedBox.shrink() // Return an empty widget if no events
+          : Align(
+              alignment: Alignment.centerLeft,
+              key: ValueKey(events), // Ensure animation triggers correctly
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ...events.map(
+                    (event) => Container(
+                      height: 30,
+                      decoration: BoxDecoration(
+                        color: ColorsManager.mainOrangeShade,
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: 6,
+                            height: 30,
+                            decoration: const ShapeDecoration(
+                              color: ColorsManager.mainOrange,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(4),
+                                  bottomLeft: Radius.circular(4),
+                                ),
+                              ),
+                            ),
+                          ),
+                          horizontalSpace(12),
+                          Expanded(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  event,
+                                  style: Styles.font13BlackMedium,
+                                ),
+                                Text(
+                                  'event',
+                                  style: Styles.font13BlackMedium,
+                                ),
+                                Text(
+                                  'event',
+                                  style: Styles.font13BlackMedium,
+                                ),
+                              ],
+                            ),
+                          ),
+                          horizontalSpace(10),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ),
-        ],
-      ),
     );
   }
 }

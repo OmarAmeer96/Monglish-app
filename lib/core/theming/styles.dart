@@ -64,6 +64,12 @@ class Styles {
     fontFamily: FontFamilyHelper.montserratBold,
   );
 
+  static TextStyle font13BlackMedium = const TextStyle(
+    color: Color(0xFF434050),
+    fontSize: 14,
+    fontFamily: FontFamilyHelper.quicksandMedium,
+  );
+
   static TextStyle font32BlueBold = TextStyle(
       // fontSize: 32.sp,
       // color: ColorsManager.mainBlue,
