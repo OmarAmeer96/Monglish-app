@@ -94,11 +94,11 @@ class _HomeViewState extends State<HomeView> {
                               eventLoader: _getEventsForDay,
                               calendarStyle: const CalendarStyle(
                                 todayDecoration: BoxDecoration(
-                                  color: Colors.orangeAccent,
+                                  color: ColorsManager.mainBlue,
                                   shape: BoxShape.circle,
                                 ),
                                 selectedDecoration: BoxDecoration(
-                                  color: Colors.blueAccent,
+                                  color: ColorsManager.mainOrange,
                                   shape: BoxShape.circle,
                                 ),
                               ),
