@@ -42,7 +42,9 @@ class _HomeViewState extends State<HomeView> {
               left: 0,
               right: 0,
               child: AppBarContainer(
-                child: Center(child: HomeViewAppBar()),
+                child: Center(
+                  child: HomeViewAppBar(),
+                ),
               ),
             ),
             Positioned(
