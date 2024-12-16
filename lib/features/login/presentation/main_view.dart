@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:monglish_app/core/helpers/constants.dart';
+import 'package:monglish_app/core/helpers/shared_pref_helper.dart';
 import 'package:monglish_app/core/helpers/spacing.dart';
 import 'package:monglish_app/core/theming/colors_manager.dart';
 import 'package:monglish_app/core/theming/font_family_helper.dart';
@@ -22,6 +24,16 @@ class _MainViewState extends State<MainView> {
       PersistentTabController(initialIndex: 2);
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  Future<String> getUserName() async {
+    final userName = await SharedPrefHelper.getString(SharedPrefKeys.userName);
+    return userName;
+  }
+
+  Future<String> getUserCode() async {
+    final userCode = await SharedPrefHelper.getString(SharedPrefKeys.userCode);
+    return userCode;
+  }
 
   List<Widget> _buildScreens() {
     return [
@@ -109,6 +121,13 @@ class _MainViewState extends State<MainView> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    getUserName();
+    getUserCode();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawerEnableOpenDragGesture: true,
@@ -172,15 +191,6 @@ class _MainViewState extends State<MainView> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                // const UserAccountsDrawerHeader(
-                //   decoration: BoxDecoration(color: Color(0xFF0A369D)),
-                //   accountName: Text("Ahmed Mohamed"),
-                //   accountEmail: Text("29501"),
-                //   currentAccountPicture: CircleAvatar(
-                //     backgroundImage:
-                //         AssetImage('assets/images/profile_picture.png'),
-                //   ),
-                // ),
                 const SizedBox(height: 60),
                 Container(
                   padding: const EdgeInsets.all(6),
@@ -214,13 +224,14 @@ class _MainViewState extends State<MainView> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Omar Ameer",
+                            getUserName().toString(),
                             style: Styles.font15WhiteBold,
                           ),
                           verticalSpace(8),
                           Text(
-                            "5545",
+                            getUserCode().toString(),
                             style: Styles.font15WhiteBold.copyWith(
+                              // ignore: deprecated_member_use
                               color: Colors.white.withOpacity(0.5),
                               fontFamily: FontFamilyHelper.montserratRegular,
                             ),

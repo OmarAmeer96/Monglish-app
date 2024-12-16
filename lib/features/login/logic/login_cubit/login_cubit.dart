@@ -45,4 +45,12 @@ class LoginCubit extends Cubit<LoginState> {
   Future<void> saveUserId(int id) async {
     await SharedPrefHelper.setData(SharedPrefKeys.userId, id);
   }
+
+  Future<void> saveUserName(String name) async {
+    await SharedPrefHelper.setData(SharedPrefKeys.userName, name);
+  }
+
+  Future<void> saveUserCode(String code) async {
+    await SharedPrefHelper.setData(SharedPrefKeys.userId, code);
+  }
 }
