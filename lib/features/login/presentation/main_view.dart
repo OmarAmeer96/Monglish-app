@@ -111,6 +111,7 @@ class _MainViewState extends State<MainView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawerEnableOpenDragGesture: true,
       key: _scaffoldKey,
       drawer: _buildDrawer(),
       body: PersistentTabView(
@@ -151,6 +152,9 @@ class _MainViewState extends State<MainView> {
   Widget _buildDrawer() {
     return Drawer(
       width: MediaQuery.of(context).size.width * 1,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(0),
+      ),
       child: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -228,79 +232,77 @@ class _MainViewState extends State<MainView> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Expanded(
-                    child: Column(
-                      children: [
-                        verticalSpace(60),
-                        DrawerItem(
-                          icon: 'assets/svgs/drawer_dashboard_icon.svg',
-                          title: 'Dashboard',
-                          onTap: () {
-                            debugPrint("Dashboard Clicked");
-                          },
-                        ),
-                        verticalSpace(18),
-                        const CustomDashedDivider(),
-                        verticalSpace(18),
-                        DrawerItem(
-                          icon: 'assets/svgs/drawer_schools_icon.svg',
-                          title: 'Schools',
-                          onTap: () {
-                            debugPrint("Classes Clicked");
-                          },
-                        ),
-                        verticalSpace(18),
-                        const CustomDashedDivider(),
-                        verticalSpace(18),
-                        DrawerItem(
-                          icon: 'assets/svgs/drawer_classes_icon.svg',
-                          title: 'Classes',
-                          onTap: () {
-                            debugPrint("Classes Clicked");
-                          },
-                        ),
-                        verticalSpace(18),
-                        const CustomDashedDivider(),
-                        verticalSpace(18),
-                        DrawerItem(
-                          icon: 'assets/svgs/drawer_clubs_icon.svg',
-                          title: 'Clubs',
-                          onTap: () {
-                            debugPrint("Clubs Clicked");
-                          },
-                        ),
-                        verticalSpace(18),
-                        const CustomDashedDivider(),
-                        verticalSpace(18),
-                        DrawerItem(
-                          icon: 'assets/svgs/drawer_payments_icon.svg',
-                          title: 'Payments',
-                          onTap: () {
-                            debugPrint("Payments Clicked");
-                          },
-                        ),
-                        verticalSpace(18),
-                        const CustomDashedDivider(),
-                        verticalSpace(18),
-                        DrawerItem(
-                          icon: 'assets/svgs/drawer_discussion_icon.svg',
-                          title: 'Discussion',
-                          onTap: () {
-                            debugPrint("Discussion Clicked");
-                          },
-                        ),
-                        verticalSpace(18),
-                        const CustomDashedDivider(),
-                        verticalSpace(18),
-                        DrawerItem(
-                          icon: 'assets/svgs/drawer_settings_icon.svg',
-                          title: 'Settings',
-                          onTap: () {
-                            debugPrint("Settings Clicked");
-                          },
-                        ),
-                      ],
-                    ),
+                  child: Column(
+                    children: [
+                      verticalSpace(60),
+                      DrawerItem(
+                        icon: 'assets/svgs/drawer_dashboard_icon.svg',
+                        title: 'Dashboard',
+                        onTap: () {
+                          debugPrint("Dashboard Clicked");
+                        },
+                      ),
+                      verticalSpace(18),
+                      const CustomDashedDivider(),
+                      verticalSpace(18),
+                      DrawerItem(
+                        icon: 'assets/svgs/drawer_schools_icon.svg',
+                        title: 'Schools',
+                        onTap: () {
+                          debugPrint("Classes Clicked");
+                        },
+                      ),
+                      verticalSpace(18),
+                      const CustomDashedDivider(),
+                      verticalSpace(18),
+                      DrawerItem(
+                        icon: 'assets/svgs/drawer_classes_icon.svg',
+                        title: 'Classes',
+                        onTap: () {
+                          debugPrint("Classes Clicked");
+                        },
+                      ),
+                      verticalSpace(18),
+                      const CustomDashedDivider(),
+                      verticalSpace(18),
+                      DrawerItem(
+                        icon: 'assets/svgs/drawer_clubs_icon.svg',
+                        title: 'Clubs',
+                        onTap: () {
+                          debugPrint("Clubs Clicked");
+                        },
+                      ),
+                      verticalSpace(18),
+                      const CustomDashedDivider(),
+                      verticalSpace(18),
+                      DrawerItem(
+                        icon: 'assets/svgs/drawer_payments_icon.svg',
+                        title: 'Payments',
+                        onTap: () {
+                          debugPrint("Payments Clicked");
+                        },
+                      ),
+                      verticalSpace(18),
+                      const CustomDashedDivider(),
+                      verticalSpace(18),
+                      DrawerItem(
+                        icon: 'assets/svgs/drawer_discussion_icon.svg',
+                        title: 'Discussion',
+                        onTap: () {
+                          debugPrint("Discussion Clicked");
+                        },
+                      ),
+                      verticalSpace(18),
+                      const CustomDashedDivider(),
+                      verticalSpace(18),
+                      DrawerItem(
+                        icon: 'assets/svgs/drawer_settings_icon.svg',
+                        title: 'Settings',
+                        onTap: () {
+                          debugPrint("Settings Clicked");
+                        },
+                      ),
+                    ],
                   ),
                 ),
               ],
