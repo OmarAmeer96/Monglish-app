@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:monglish_app/core/helpers/spacing.dart';
 import 'package:monglish_app/core/theming/colors_manager.dart';
 import 'package:monglish_app/core/theming/styles.dart';
 import 'package:monglish_app/core/widgets/app_bar_container.dart';
+import 'package:monglish_app/features/home/logic/students_cubit/students_cubit.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_current_level_section.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_feed_back_section.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_level_section.dart';
@@ -33,112 +35,125 @@ class _HomeViewState extends State<HomeView> {
   };
 
   @override
+  void initState() {
+    super.initState();
+    context.read<StudentsCubit>().getStudents();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
-        child: Stack(
-          children: [
-            const Positioned(
-              top: 0,
-              left: 0,
-              right: 0,
-              child: AppBarContainer(
-                child: Center(
-                  child: HomeViewAppBar(),
+        child: RefreshIndicator(
+          color: ColorsManager.mainOrange,
+          displacement: 10,
+          onRefresh: () async {
+            context.read<StudentsCubit>().getStudents();
+          },
+          child: Stack(
+            children: [
+              const Positioned(
+                top: 0,
+                left: 0,
+                right: 0,
+                child: AppBarContainer(
+                  child: Center(
+                    child: HomeViewAppBar(),
+                  ),
                 ),
               ),
-            ),
-            Positioned(
-              top: 130.h,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              child: Container(
-                decoration: const BoxDecoration(
-                  color: Color(0xfff1f5ff),
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(16),
-                    topRight: Radius.circular(16),
+              Positioned(
+                top: 130.h,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                child: Container(
+                  decoration: const BoxDecoration(
+                    color: Color(0xfff1f5ff),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(16),
+                      topRight: Radius.circular(16),
+                    ),
                   ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    left: 16,
-                    right: 16,
-                    top: 0,
-                  ),
-                  child: Scrollbar(
-                    child: SingleChildScrollView(
-                      physics: const BouncingScrollPhysics(),
-                      child: Column(
-                        children: [
-                          verticalSpace(16),
-                          const HomePersonalInfoSection(),
-                          verticalSpace(16),
-                          const HomeCurrentLevelSection(),
-                          verticalSpace(16),
-                          const HomePackageClubsSection(),
-                          verticalSpace(16),
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      left: 16,
+                      right: 16,
+                      top: 0,
+                    ),
+                    child: Scrollbar(
+                      child: SingleChildScrollView(
+                        physics: const BouncingScrollPhysics(),
+                        child: Column(
+                          children: [
+                            verticalSpace(16),
+                            const HomePersonalInfoSection(),
+                            verticalSpace(16),
+                            const HomeCurrentLevelSection(),
+                            verticalSpace(16),
+                            const HomePackageClubsSection(),
+                            verticalSpace(16),
 
-                          // Table Calendar
-                          HomeViewColoredContainer(
-                            color: const Color(0xFFFFFFFF),
-                            child: TableCalendar(
-                              firstDay: DateTime.utc(2024, 1, 1),
-                              lastDay: DateTime.utc(2025, 12, 31),
-                              focusedDay: _focusedDay,
-                              calendarFormat: _calendarFormat,
-                              selectedDayPredicate: (day) =>
-                                  isSameDay(_selectedDay, day),
-                              eventLoader: _getEventsForDay,
-                              calendarStyle: const CalendarStyle(
-                                todayDecoration: BoxDecoration(
-                                  color: ColorsManager.mainBlue,
-                                  shape: BoxShape.circle,
+                            // Table Calendar
+                            HomeViewColoredContainer(
+                              color: const Color(0xFFFFFFFF),
+                              child: TableCalendar(
+                                firstDay: DateTime.utc(2024, 1, 1),
+                                lastDay: DateTime.utc(2025, 12, 31),
+                                focusedDay: _focusedDay,
+                                calendarFormat: _calendarFormat,
+                                selectedDayPredicate: (day) =>
+                                    isSameDay(_selectedDay, day),
+                                eventLoader: _getEventsForDay,
+                                calendarStyle: const CalendarStyle(
+                                  todayDecoration: BoxDecoration(
+                                    color: ColorsManager.mainBlue,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  selectedDecoration: BoxDecoration(
+                                    color: ColorsManager.mainOrange,
+                                    shape: BoxShape.circle,
+                                  ),
                                 ),
-                                selectedDecoration: BoxDecoration(
-                                  color: ColorsManager.mainOrange,
-                                  shape: BoxShape.circle,
-                                ),
-                              ),
-                              onDaySelected: (selectedDay, focusedDay) {
-                                setState(() {
-                                  _selectedDay = selectedDay;
+                                onDaySelected: (selectedDay, focusedDay) {
+                                  setState(() {
+                                    _selectedDay = selectedDay;
+                                    _focusedDay = focusedDay;
+                                  });
+                                },
+                                onFormatChanged: (format) {
+                                  setState(() {
+                                    _calendarFormat = format;
+                                  });
+                                },
+                                onPageChanged: (focusedDay) {
                                   _focusedDay = focusedDay;
-                                });
-                              },
-                              onFormatChanged: (format) {
-                                setState(() {
-                                  _calendarFormat = format;
-                                });
-                              },
-                              onPageChanged: (focusedDay) {
-                                _focusedDay = focusedDay;
-                              },
+                                },
+                              ),
                             ),
-                          ),
-                          verticalSpace(16),
+                            verticalSpace(16),
 
-                          // Event List Section
-                          if (_selectedDay != null)
-                            _buildEventList(_selectedDay!),
+                            // Event List Section
+                            if (_selectedDay != null)
+                              _buildEventList(_selectedDay!),
 
-                          verticalSpace(16),
-                          const HomeLevelSection(),
-                          verticalSpace(16),
-                          const HomeRewardsSection(),
-                          verticalSpace(16),
-                          const HomeFeedbackSection(),
-                          verticalSpace(12),
-                        ],
+                            verticalSpace(16),
+                            const HomeLevelSection(),
+                            verticalSpace(16),
+                            const HomeRewardsSection(),
+                            verticalSpace(16),
+                            const HomeFeedbackSection(),
+                            verticalSpace(12),
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

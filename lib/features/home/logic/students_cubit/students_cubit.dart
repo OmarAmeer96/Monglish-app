@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:monglish_app/core/helpers/constants.dart';
+import 'package:monglish_app/core/helpers/shared_pref_helper.dart';
 import 'package:monglish_app/features/home/data/repos/students_repo.dart';
 import 'package:monglish_app/features/home/logic/students_cubit/students_state.dart';
 
 class StudentsCubit extends Cubit<StudentsState> {
-  final ProductsRepo _productsRepo;
-  int _skip = 0;
-  final int _limit = 10;
-  bool hasReachedEnd = false;
-  String currentQuery = '';
+  final StudentsRepo _productsRepo;
 
   final formKey = GlobalKey<FormState>();
   final addProductFormKey = GlobalKey<FormState>();
@@ -23,35 +21,24 @@ class StudentsCubit extends Cubit<StudentsState> {
 
   StudentsCubit(this._productsRepo) : super(const StudentsState.initial());
 
-  void getProducts() async {
-    if (hasReachedEnd || state is! Success && state is! Initial) {
-      return;
-    }
-    if (state is! Success) {
-      emit(const StudentsState.loading());
-    }
-    final response = await _productsRepo.getProducts(_limit, _skip);
-    // response.when(
-    //   success: (productsModelResponse) {
-    //     _skip += _limit;
-    //     if (productsModelResponse.products!.length < _limit) {
-    //       hasReachedEnd = true;
-    //     }
-    //     if (state is Success) {
-    //       final oldProducts = (state as Success).data.products;
-    //       final newProducts = oldProducts + productsModelResponse.products!;
-    //       emit(StudentsState.success(
-    //           productsModelResponse.copyWith(products: newProducts)));
-    //     } else {
-    //       emit(StudentsState.success(productsModelResponse));
-    //     }
-    //   },
-    //   failure: (error) {
-    //     emit(
-    //       StudentsState.error(
-    //           error: error.apiErrorModel.message ?? 'Something went wrong!'),
-    //     );
-    //   },
-    // );
+  void getStudents() async {
+    emit(const StudentsState.loading());
+    final response = await _productsRepo.getStudents(
+      await SharedPrefHelper.getInt(SharedPrefKeys.userId),
+    );
+    response.when(
+      success: (studentsResponse) {
+        if (state is Success) {
+          emit(StudentsState.success(studentsResponse));
+        }
+      },
+      failure: (error) {
+        emit(
+          StudentsState.error(
+            error: error.apiErrorModel.message ?? 'Something went wrong!',
+          ),
+        );
+      },
+    );
   }
 }

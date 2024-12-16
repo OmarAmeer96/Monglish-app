@@ -16,15 +16,8 @@ abstract class ApiService {
     @Body() LoginRequestBody loginRequestBody,
   );
 
-  // Get Products with Pagination
   @GET(ApiConstants.getStudents)
-  Future<Students> getProducts({
-    @Header('Authorization') String token,
-    @Query('id') int id,
+  Future<Students> getStudents({
+    @Path('id') required int id,
   });
-
-  // @POST(ApiConstants.signup)
-  // Future<SignupResponse> signup(
-  //   @Body() SignupRequestBody signupRequestBody,
-  // );
 }

@@ -14,3 +14,8 @@ Future<void> checkIfUserIsLoggedIn() async {
   }
   debugPrint('Is User Logged In: $isUserLoggedIn');
 }
+
+Future<void> printUserId() async {
+  int? userId = await SharedPrefHelper.getInt(SharedPrefKeys.userId);
+  debugPrint('User Id: $userId');
+}

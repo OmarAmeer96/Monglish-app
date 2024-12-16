@@ -58,14 +58,10 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<Students> getProducts({
-    required String token,
-    required int id,
-  }) async {
+  Future<Students> getStudents({required int id}) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'id': id};
-    final _headers = <String, dynamic>{r'Authorization': token};
-    _headers.removeWhere((k, v) => v == null);
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<Students>(Options(
       method: 'GET',
@@ -74,7 +70,7 @@ class _ApiService implements ApiService {
     )
         .compose(
           _dio.options,
-          'students/',
+          'students/${id}',
           queryParameters: queryParameters,
           data: _data,
         )

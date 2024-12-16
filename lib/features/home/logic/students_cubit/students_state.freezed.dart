@@ -21,9 +21,6 @@ mixin _$StudentsState<T> {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(T data) success,
-    required TResult Function(T data) successAdd,
-    required TResult Function(T data) successUpdate,
-    required TResult Function(T data) successDelete,
     required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -32,9 +29,6 @@ mixin _$StudentsState<T> {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(T data)? success,
-    TResult? Function(T data)? successAdd,
-    TResult? Function(T data)? successUpdate,
-    TResult? Function(T data)? successDelete,
     TResult? Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -43,9 +37,6 @@ mixin _$StudentsState<T> {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(T data)? success,
-    TResult Function(T data)? successAdd,
-    TResult Function(T data)? successUpdate,
-    TResult Function(T data)? successDelete,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
@@ -55,9 +46,6 @@ mixin _$StudentsState<T> {
     required TResult Function(Initial<T> value) initial,
     required TResult Function(Loading<T> value) loading,
     required TResult Function(Success<T> value) success,
-    required TResult Function(SuccessAdd<T> value) successAdd,
-    required TResult Function(SuccessUpdate<T> value) successUpdate,
-    required TResult Function(SuccessDelete<T> value) successDelete,
     required TResult Function(Error<T> value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -66,9 +54,6 @@ mixin _$StudentsState<T> {
     TResult? Function(Initial<T> value)? initial,
     TResult? Function(Loading<T> value)? loading,
     TResult? Function(Success<T> value)? success,
-    TResult? Function(SuccessAdd<T> value)? successAdd,
-    TResult? Function(SuccessUpdate<T> value)? successUpdate,
-    TResult? Function(SuccessDelete<T> value)? successDelete,
     TResult? Function(Error<T> value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -77,9 +62,6 @@ mixin _$StudentsState<T> {
     TResult Function(Initial<T> value)? initial,
     TResult Function(Loading<T> value)? loading,
     TResult Function(Success<T> value)? success,
-    TResult Function(SuccessAdd<T> value)? successAdd,
-    TResult Function(SuccessUpdate<T> value)? successUpdate,
-    TResult Function(SuccessDelete<T> value)? successDelete,
     TResult Function(Error<T> value)? error,
     required TResult orElse(),
   }) =>
@@ -151,9 +133,6 @@ class _$InitialImpl<T> implements Initial<T> {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(T data) success,
-    required TResult Function(T data) successAdd,
-    required TResult Function(T data) successUpdate,
-    required TResult Function(T data) successDelete,
     required TResult Function(String error) error,
   }) {
     return initial();
@@ -165,9 +144,6 @@ class _$InitialImpl<T> implements Initial<T> {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(T data)? success,
-    TResult? Function(T data)? successAdd,
-    TResult? Function(T data)? successUpdate,
-    TResult? Function(T data)? successDelete,
     TResult? Function(String error)? error,
   }) {
     return initial?.call();
@@ -179,9 +155,6 @@ class _$InitialImpl<T> implements Initial<T> {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(T data)? success,
-    TResult Function(T data)? successAdd,
-    TResult Function(T data)? successUpdate,
-    TResult Function(T data)? successDelete,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -197,9 +170,6 @@ class _$InitialImpl<T> implements Initial<T> {
     required TResult Function(Initial<T> value) initial,
     required TResult Function(Loading<T> value) loading,
     required TResult Function(Success<T> value) success,
-    required TResult Function(SuccessAdd<T> value) successAdd,
-    required TResult Function(SuccessUpdate<T> value) successUpdate,
-    required TResult Function(SuccessDelete<T> value) successDelete,
     required TResult Function(Error<T> value) error,
   }) {
     return initial(this);
@@ -211,9 +181,6 @@ class _$InitialImpl<T> implements Initial<T> {
     TResult? Function(Initial<T> value)? initial,
     TResult? Function(Loading<T> value)? loading,
     TResult? Function(Success<T> value)? success,
-    TResult? Function(SuccessAdd<T> value)? successAdd,
-    TResult? Function(SuccessUpdate<T> value)? successUpdate,
-    TResult? Function(SuccessDelete<T> value)? successDelete,
     TResult? Function(Error<T> value)? error,
   }) {
     return initial?.call(this);
@@ -225,9 +192,6 @@ class _$InitialImpl<T> implements Initial<T> {
     TResult Function(Initial<T> value)? initial,
     TResult Function(Loading<T> value)? loading,
     TResult Function(Success<T> value)? success,
-    TResult Function(SuccessAdd<T> value)? successAdd,
-    TResult Function(SuccessUpdate<T> value)? successUpdate,
-    TResult Function(SuccessDelete<T> value)? successDelete,
     TResult Function(Error<T> value)? error,
     required TResult orElse(),
   }) {
@@ -286,9 +250,6 @@ class _$LoadingImpl<T> implements Loading<T> {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(T data) success,
-    required TResult Function(T data) successAdd,
-    required TResult Function(T data) successUpdate,
-    required TResult Function(T data) successDelete,
     required TResult Function(String error) error,
   }) {
     return loading();
@@ -300,9 +261,6 @@ class _$LoadingImpl<T> implements Loading<T> {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(T data)? success,
-    TResult? Function(T data)? successAdd,
-    TResult? Function(T data)? successUpdate,
-    TResult? Function(T data)? successDelete,
     TResult? Function(String error)? error,
   }) {
     return loading?.call();
@@ -314,9 +272,6 @@ class _$LoadingImpl<T> implements Loading<T> {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(T data)? success,
-    TResult Function(T data)? successAdd,
-    TResult Function(T data)? successUpdate,
-    TResult Function(T data)? successDelete,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -332,9 +287,6 @@ class _$LoadingImpl<T> implements Loading<T> {
     required TResult Function(Initial<T> value) initial,
     required TResult Function(Loading<T> value) loading,
     required TResult Function(Success<T> value) success,
-    required TResult Function(SuccessAdd<T> value) successAdd,
-    required TResult Function(SuccessUpdate<T> value) successUpdate,
-    required TResult Function(SuccessDelete<T> value) successDelete,
     required TResult Function(Error<T> value) error,
   }) {
     return loading(this);
@@ -346,9 +298,6 @@ class _$LoadingImpl<T> implements Loading<T> {
     TResult? Function(Initial<T> value)? initial,
     TResult? Function(Loading<T> value)? loading,
     TResult? Function(Success<T> value)? success,
-    TResult? Function(SuccessAdd<T> value)? successAdd,
-    TResult? Function(SuccessUpdate<T> value)? successUpdate,
-    TResult? Function(SuccessDelete<T> value)? successDelete,
     TResult? Function(Error<T> value)? error,
   }) {
     return loading?.call(this);
@@ -360,9 +309,6 @@ class _$LoadingImpl<T> implements Loading<T> {
     TResult Function(Initial<T> value)? initial,
     TResult Function(Loading<T> value)? loading,
     TResult Function(Success<T> value)? success,
-    TResult Function(SuccessAdd<T> value)? successAdd,
-    TResult Function(SuccessUpdate<T> value)? successUpdate,
-    TResult Function(SuccessDelete<T> value)? successDelete,
     TResult Function(Error<T> value)? error,
     required TResult orElse(),
   }) {
@@ -449,9 +395,6 @@ class _$SuccessImpl<T> implements Success<T> {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(T data) success,
-    required TResult Function(T data) successAdd,
-    required TResult Function(T data) successUpdate,
-    required TResult Function(T data) successDelete,
     required TResult Function(String error) error,
   }) {
     return success(data);
@@ -463,9 +406,6 @@ class _$SuccessImpl<T> implements Success<T> {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(T data)? success,
-    TResult? Function(T data)? successAdd,
-    TResult? Function(T data)? successUpdate,
-    TResult? Function(T data)? successDelete,
     TResult? Function(String error)? error,
   }) {
     return success?.call(data);
@@ -477,9 +417,6 @@ class _$SuccessImpl<T> implements Success<T> {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(T data)? success,
-    TResult Function(T data)? successAdd,
-    TResult Function(T data)? successUpdate,
-    TResult Function(T data)? successDelete,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -495,9 +432,6 @@ class _$SuccessImpl<T> implements Success<T> {
     required TResult Function(Initial<T> value) initial,
     required TResult Function(Loading<T> value) loading,
     required TResult Function(Success<T> value) success,
-    required TResult Function(SuccessAdd<T> value) successAdd,
-    required TResult Function(SuccessUpdate<T> value) successUpdate,
-    required TResult Function(SuccessDelete<T> value) successDelete,
     required TResult Function(Error<T> value) error,
   }) {
     return success(this);
@@ -509,9 +443,6 @@ class _$SuccessImpl<T> implements Success<T> {
     TResult? Function(Initial<T> value)? initial,
     TResult? Function(Loading<T> value)? loading,
     TResult? Function(Success<T> value)? success,
-    TResult? Function(SuccessAdd<T> value)? successAdd,
-    TResult? Function(SuccessUpdate<T> value)? successUpdate,
-    TResult? Function(SuccessDelete<T> value)? successDelete,
     TResult? Function(Error<T> value)? error,
   }) {
     return success?.call(this);
@@ -523,9 +454,6 @@ class _$SuccessImpl<T> implements Success<T> {
     TResult Function(Initial<T> value)? initial,
     TResult Function(Loading<T> value)? loading,
     TResult Function(Success<T> value)? success,
-    TResult Function(SuccessAdd<T> value)? successAdd,
-    TResult Function(SuccessUpdate<T> value)? successUpdate,
-    TResult Function(SuccessDelete<T> value)? successDelete,
     TResult Function(Error<T> value)? error,
     required TResult orElse(),
   }) {
@@ -545,521 +473,6 @@ abstract class Success<T> implements StudentsState<T> {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SuccessImplCopyWith<T, _$SuccessImpl<T>> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$SuccessAddImplCopyWith<T, $Res> {
-  factory _$$SuccessAddImplCopyWith(
-          _$SuccessAddImpl<T> value, $Res Function(_$SuccessAddImpl<T>) then) =
-      __$$SuccessAddImplCopyWithImpl<T, $Res>;
-  @useResult
-  $Res call({T data});
-}
-
-/// @nodoc
-class __$$SuccessAddImplCopyWithImpl<T, $Res>
-    extends _$StudentsStateCopyWithImpl<T, $Res, _$SuccessAddImpl<T>>
-    implements _$$SuccessAddImplCopyWith<T, $Res> {
-  __$$SuccessAddImplCopyWithImpl(
-      _$SuccessAddImpl<T> _value, $Res Function(_$SuccessAddImpl<T>) _then)
-      : super(_value, _then);
-
-  /// Create a copy of StudentsState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? data = freezed,
-  }) {
-    return _then(_$SuccessAddImpl<T>(
-      freezed == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as T,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$SuccessAddImpl<T> implements SuccessAdd<T> {
-  const _$SuccessAddImpl(this.data);
-
-  @override
-  final T data;
-
-  @override
-  String toString() {
-    return 'StudentsState<$T>.successAdd(data: $data)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SuccessAddImpl<T> &&
-            const DeepCollectionEquality().equals(other.data, data));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
-
-  /// Create a copy of StudentsState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SuccessAddImplCopyWith<T, _$SuccessAddImpl<T>> get copyWith =>
-      __$$SuccessAddImplCopyWithImpl<T, _$SuccessAddImpl<T>>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(T data) success,
-    required TResult Function(T data) successAdd,
-    required TResult Function(T data) successUpdate,
-    required TResult Function(T data) successDelete,
-    required TResult Function(String error) error,
-  }) {
-    return successAdd(data);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(T data)? success,
-    TResult? Function(T data)? successAdd,
-    TResult? Function(T data)? successUpdate,
-    TResult? Function(T data)? successDelete,
-    TResult? Function(String error)? error,
-  }) {
-    return successAdd?.call(data);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(T data)? success,
-    TResult Function(T data)? successAdd,
-    TResult Function(T data)? successUpdate,
-    TResult Function(T data)? successDelete,
-    TResult Function(String error)? error,
-    required TResult orElse(),
-  }) {
-    if (successAdd != null) {
-      return successAdd(data);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Initial<T> value) initial,
-    required TResult Function(Loading<T> value) loading,
-    required TResult Function(Success<T> value) success,
-    required TResult Function(SuccessAdd<T> value) successAdd,
-    required TResult Function(SuccessUpdate<T> value) successUpdate,
-    required TResult Function(SuccessDelete<T> value) successDelete,
-    required TResult Function(Error<T> value) error,
-  }) {
-    return successAdd(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Initial<T> value)? initial,
-    TResult? Function(Loading<T> value)? loading,
-    TResult? Function(Success<T> value)? success,
-    TResult? Function(SuccessAdd<T> value)? successAdd,
-    TResult? Function(SuccessUpdate<T> value)? successUpdate,
-    TResult? Function(SuccessDelete<T> value)? successDelete,
-    TResult? Function(Error<T> value)? error,
-  }) {
-    return successAdd?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial<T> value)? initial,
-    TResult Function(Loading<T> value)? loading,
-    TResult Function(Success<T> value)? success,
-    TResult Function(SuccessAdd<T> value)? successAdd,
-    TResult Function(SuccessUpdate<T> value)? successUpdate,
-    TResult Function(SuccessDelete<T> value)? successDelete,
-    TResult Function(Error<T> value)? error,
-    required TResult orElse(),
-  }) {
-    if (successAdd != null) {
-      return successAdd(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class SuccessAdd<T> implements StudentsState<T> {
-  const factory SuccessAdd(final T data) = _$SuccessAddImpl<T>;
-
-  T get data;
-
-  /// Create a copy of StudentsState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SuccessAddImplCopyWith<T, _$SuccessAddImpl<T>> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$SuccessUpdateImplCopyWith<T, $Res> {
-  factory _$$SuccessUpdateImplCopyWith(_$SuccessUpdateImpl<T> value,
-          $Res Function(_$SuccessUpdateImpl<T>) then) =
-      __$$SuccessUpdateImplCopyWithImpl<T, $Res>;
-  @useResult
-  $Res call({T data});
-}
-
-/// @nodoc
-class __$$SuccessUpdateImplCopyWithImpl<T, $Res>
-    extends _$StudentsStateCopyWithImpl<T, $Res, _$SuccessUpdateImpl<T>>
-    implements _$$SuccessUpdateImplCopyWith<T, $Res> {
-  __$$SuccessUpdateImplCopyWithImpl(_$SuccessUpdateImpl<T> _value,
-      $Res Function(_$SuccessUpdateImpl<T>) _then)
-      : super(_value, _then);
-
-  /// Create a copy of StudentsState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? data = freezed,
-  }) {
-    return _then(_$SuccessUpdateImpl<T>(
-      freezed == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as T,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$SuccessUpdateImpl<T> implements SuccessUpdate<T> {
-  const _$SuccessUpdateImpl(this.data);
-
-  @override
-  final T data;
-
-  @override
-  String toString() {
-    return 'StudentsState<$T>.successUpdate(data: $data)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SuccessUpdateImpl<T> &&
-            const DeepCollectionEquality().equals(other.data, data));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
-
-  /// Create a copy of StudentsState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SuccessUpdateImplCopyWith<T, _$SuccessUpdateImpl<T>> get copyWith =>
-      __$$SuccessUpdateImplCopyWithImpl<T, _$SuccessUpdateImpl<T>>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(T data) success,
-    required TResult Function(T data) successAdd,
-    required TResult Function(T data) successUpdate,
-    required TResult Function(T data) successDelete,
-    required TResult Function(String error) error,
-  }) {
-    return successUpdate(data);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(T data)? success,
-    TResult? Function(T data)? successAdd,
-    TResult? Function(T data)? successUpdate,
-    TResult? Function(T data)? successDelete,
-    TResult? Function(String error)? error,
-  }) {
-    return successUpdate?.call(data);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(T data)? success,
-    TResult Function(T data)? successAdd,
-    TResult Function(T data)? successUpdate,
-    TResult Function(T data)? successDelete,
-    TResult Function(String error)? error,
-    required TResult orElse(),
-  }) {
-    if (successUpdate != null) {
-      return successUpdate(data);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Initial<T> value) initial,
-    required TResult Function(Loading<T> value) loading,
-    required TResult Function(Success<T> value) success,
-    required TResult Function(SuccessAdd<T> value) successAdd,
-    required TResult Function(SuccessUpdate<T> value) successUpdate,
-    required TResult Function(SuccessDelete<T> value) successDelete,
-    required TResult Function(Error<T> value) error,
-  }) {
-    return successUpdate(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Initial<T> value)? initial,
-    TResult? Function(Loading<T> value)? loading,
-    TResult? Function(Success<T> value)? success,
-    TResult? Function(SuccessAdd<T> value)? successAdd,
-    TResult? Function(SuccessUpdate<T> value)? successUpdate,
-    TResult? Function(SuccessDelete<T> value)? successDelete,
-    TResult? Function(Error<T> value)? error,
-  }) {
-    return successUpdate?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial<T> value)? initial,
-    TResult Function(Loading<T> value)? loading,
-    TResult Function(Success<T> value)? success,
-    TResult Function(SuccessAdd<T> value)? successAdd,
-    TResult Function(SuccessUpdate<T> value)? successUpdate,
-    TResult Function(SuccessDelete<T> value)? successDelete,
-    TResult Function(Error<T> value)? error,
-    required TResult orElse(),
-  }) {
-    if (successUpdate != null) {
-      return successUpdate(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class SuccessUpdate<T> implements StudentsState<T> {
-  const factory SuccessUpdate(final T data) = _$SuccessUpdateImpl<T>;
-
-  T get data;
-
-  /// Create a copy of StudentsState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SuccessUpdateImplCopyWith<T, _$SuccessUpdateImpl<T>> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$SuccessDeleteImplCopyWith<T, $Res> {
-  factory _$$SuccessDeleteImplCopyWith(_$SuccessDeleteImpl<T> value,
-          $Res Function(_$SuccessDeleteImpl<T>) then) =
-      __$$SuccessDeleteImplCopyWithImpl<T, $Res>;
-  @useResult
-  $Res call({T data});
-}
-
-/// @nodoc
-class __$$SuccessDeleteImplCopyWithImpl<T, $Res>
-    extends _$StudentsStateCopyWithImpl<T, $Res, _$SuccessDeleteImpl<T>>
-    implements _$$SuccessDeleteImplCopyWith<T, $Res> {
-  __$$SuccessDeleteImplCopyWithImpl(_$SuccessDeleteImpl<T> _value,
-      $Res Function(_$SuccessDeleteImpl<T>) _then)
-      : super(_value, _then);
-
-  /// Create a copy of StudentsState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? data = freezed,
-  }) {
-    return _then(_$SuccessDeleteImpl<T>(
-      freezed == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as T,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$SuccessDeleteImpl<T> implements SuccessDelete<T> {
-  const _$SuccessDeleteImpl(this.data);
-
-  @override
-  final T data;
-
-  @override
-  String toString() {
-    return 'StudentsState<$T>.successDelete(data: $data)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SuccessDeleteImpl<T> &&
-            const DeepCollectionEquality().equals(other.data, data));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
-
-  /// Create a copy of StudentsState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SuccessDeleteImplCopyWith<T, _$SuccessDeleteImpl<T>> get copyWith =>
-      __$$SuccessDeleteImplCopyWithImpl<T, _$SuccessDeleteImpl<T>>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(T data) success,
-    required TResult Function(T data) successAdd,
-    required TResult Function(T data) successUpdate,
-    required TResult Function(T data) successDelete,
-    required TResult Function(String error) error,
-  }) {
-    return successDelete(data);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(T data)? success,
-    TResult? Function(T data)? successAdd,
-    TResult? Function(T data)? successUpdate,
-    TResult? Function(T data)? successDelete,
-    TResult? Function(String error)? error,
-  }) {
-    return successDelete?.call(data);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(T data)? success,
-    TResult Function(T data)? successAdd,
-    TResult Function(T data)? successUpdate,
-    TResult Function(T data)? successDelete,
-    TResult Function(String error)? error,
-    required TResult orElse(),
-  }) {
-    if (successDelete != null) {
-      return successDelete(data);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Initial<T> value) initial,
-    required TResult Function(Loading<T> value) loading,
-    required TResult Function(Success<T> value) success,
-    required TResult Function(SuccessAdd<T> value) successAdd,
-    required TResult Function(SuccessUpdate<T> value) successUpdate,
-    required TResult Function(SuccessDelete<T> value) successDelete,
-    required TResult Function(Error<T> value) error,
-  }) {
-    return successDelete(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Initial<T> value)? initial,
-    TResult? Function(Loading<T> value)? loading,
-    TResult? Function(Success<T> value)? success,
-    TResult? Function(SuccessAdd<T> value)? successAdd,
-    TResult? Function(SuccessUpdate<T> value)? successUpdate,
-    TResult? Function(SuccessDelete<T> value)? successDelete,
-    TResult? Function(Error<T> value)? error,
-  }) {
-    return successDelete?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial<T> value)? initial,
-    TResult Function(Loading<T> value)? loading,
-    TResult Function(Success<T> value)? success,
-    TResult Function(SuccessAdd<T> value)? successAdd,
-    TResult Function(SuccessUpdate<T> value)? successUpdate,
-    TResult Function(SuccessDelete<T> value)? successDelete,
-    TResult Function(Error<T> value)? error,
-    required TResult orElse(),
-  }) {
-    if (successDelete != null) {
-      return successDelete(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class SuccessDelete<T> implements StudentsState<T> {
-  const factory SuccessDelete(final T data) = _$SuccessDeleteImpl<T>;
-
-  T get data;
-
-  /// Create a copy of StudentsState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SuccessDeleteImplCopyWith<T, _$SuccessDeleteImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1134,9 +547,6 @@ class _$ErrorImpl<T> implements Error<T> {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(T data) success,
-    required TResult Function(T data) successAdd,
-    required TResult Function(T data) successUpdate,
-    required TResult Function(T data) successDelete,
     required TResult Function(String error) error,
   }) {
     return error(this.error);
@@ -1148,9 +558,6 @@ class _$ErrorImpl<T> implements Error<T> {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(T data)? success,
-    TResult? Function(T data)? successAdd,
-    TResult? Function(T data)? successUpdate,
-    TResult? Function(T data)? successDelete,
     TResult? Function(String error)? error,
   }) {
     return error?.call(this.error);
@@ -1162,9 +569,6 @@ class _$ErrorImpl<T> implements Error<T> {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(T data)? success,
-    TResult Function(T data)? successAdd,
-    TResult Function(T data)? successUpdate,
-    TResult Function(T data)? successDelete,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -1180,9 +584,6 @@ class _$ErrorImpl<T> implements Error<T> {
     required TResult Function(Initial<T> value) initial,
     required TResult Function(Loading<T> value) loading,
     required TResult Function(Success<T> value) success,
-    required TResult Function(SuccessAdd<T> value) successAdd,
-    required TResult Function(SuccessUpdate<T> value) successUpdate,
-    required TResult Function(SuccessDelete<T> value) successDelete,
     required TResult Function(Error<T> value) error,
   }) {
     return error(this);
@@ -1194,9 +595,6 @@ class _$ErrorImpl<T> implements Error<T> {
     TResult? Function(Initial<T> value)? initial,
     TResult? Function(Loading<T> value)? loading,
     TResult? Function(Success<T> value)? success,
-    TResult? Function(SuccessAdd<T> value)? successAdd,
-    TResult? Function(SuccessUpdate<T> value)? successUpdate,
-    TResult? Function(SuccessDelete<T> value)? successDelete,
     TResult? Function(Error<T> value)? error,
   }) {
     return error?.call(this);
@@ -1208,9 +606,6 @@ class _$ErrorImpl<T> implements Error<T> {
     TResult Function(Initial<T> value)? initial,
     TResult Function(Loading<T> value)? loading,
     TResult Function(Success<T> value)? success,
-    TResult Function(SuccessAdd<T> value)? successAdd,
-    TResult Function(SuccessUpdate<T> value)? successUpdate,
-    TResult Function(SuccessDelete<T> value)? successDelete,
     TResult Function(Error<T> value)? error,
     required TResult orElse(),
   }) {

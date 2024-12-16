@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:monglish_app/core/di/dependency_injection.dart';
 import 'package:monglish_app/core/routing/routes.dart';
+import 'package:monglish_app/features/home/logic/students_cubit/students_cubit.dart';
 import 'package:monglish_app/features/home/presentation/home_view.dart';
 import 'package:monglish_app/features/login/logic/login_cubit/login_cubit.dart';
 import 'package:monglish_app/features/login/presentation/login_view.dart';
@@ -26,17 +27,22 @@ class AppRouter {
             child: const LoginView(),
           ),
         );
-      // case Routes.homeView:
+      // case Routes.mainView:
       //   return MaterialPageRoute(
       //     builder: (_) => BlocProvider(
-      //       create: (context) => HomeCubit(getIt())..getAllSpecializations(),
-      //       child: const HomeView(),
+      //       create: (context) => StudentsCubit(getIt())..getStudents(),
+      //       child: const MainView(),
       //     ),
       //   );
+
       case Routes.mainView:
         return MaterialPageRoute(
-          builder: (_) => MainView(),
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<StudentsCubit>(),
+            child: const MainView(),
+          ),
         );
+
       case Routes.homeView:
         return MaterialPageRoute(
           builder: (_) => const HomeView(),

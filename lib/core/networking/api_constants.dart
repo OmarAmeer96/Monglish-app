@@ -2,9 +2,8 @@ class ApiConstants {
   static const String apiBaseUrl =
       "https://monglishtest.fekracomputers.net/api/";
   static const String login = "login";
-  static const String getStudents = "students/";
-  static const String signup = "auth/register";
-  static const String getAllSpecializations = "specialization/index";
+  static const String getStudents = "students/{id}";
+  static const String register = "register";
 }
 
 class ApiErrors {

@@ -17,6 +17,7 @@ void main() async {
   await ScreenUtil.ensureScreenSize();
 
   await checkIfUserIsLoggedIn();
+  await printUserId();
 
   runApp(
     MonglishApp(
