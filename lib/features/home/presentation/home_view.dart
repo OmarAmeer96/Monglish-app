@@ -132,32 +132,30 @@ class _HomeViewState extends State<HomeView> {
   }
 
   Widget setupErrorState(BuildContext context) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'An error occurred while fetching data, please try again later',
-              textAlign: TextAlign.center,
-              style: Styles.font18BlackBold.copyWith(
-                fontSize: 20,
-              ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            'An error occurred while fetching data, please try again later',
+            textAlign: TextAlign.center,
+            style: Styles.font18BlackBold.copyWith(
+              fontSize: 20,
             ),
-            verticalSpace(16),
-            CustomMainButton(
-              buttonWidth: 150.w,
-              textStyle: Styles.font20WhiteBold.copyWith(
-                fontSize: 20,
-              ),
-              onPressed: () {
-                context.read<StudentsCubit>().getStudents();
-              },
-              buttonText: 'Retry',
+          ),
+          verticalSpace(16),
+          CustomMainButton(
+            buttonWidth: 150.w,
+            textStyle: Styles.font20WhiteBold.copyWith(
+              fontSize: 20,
             ),
-          ],
-        ),
+            onPressed: () {
+              context.read<StudentsCubit>().getStudents();
+            },
+            buttonText: 'Retry',
+          ),
+        ],
       ),
     );
   }

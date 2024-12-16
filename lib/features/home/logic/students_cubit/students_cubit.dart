@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:monglish_app/core/helpers/constants.dart';
 import 'package:monglish_app/core/helpers/shared_pref_helper.dart';
@@ -7,17 +6,6 @@ import 'package:monglish_app/features/home/logic/students_cubit/students_state.d
 
 class StudentsCubit extends Cubit<StudentsState> {
   final StudentsRepo _productsRepo;
-
-  final formKey = GlobalKey<FormState>();
-  final addProductFormKey = GlobalKey<FormState>();
-  TextEditingController productNameController = TextEditingController();
-  TextEditingController productPriceController = TextEditingController();
-  TextEditingController productDescriptionController = TextEditingController();
-
-  TextEditingController addProductNameController = TextEditingController();
-  TextEditingController addProductDescriptionController =
-      TextEditingController();
-  TextEditingController addProductPriceController = TextEditingController();
 
   StudentsCubit(this._productsRepo) : super(const StudentsState.initial());
 
@@ -38,5 +26,10 @@ class StudentsCubit extends Cubit<StudentsState> {
         );
       },
     );
+  }
+
+  Future<String> getUserName() async {
+    final userName = await SharedPrefHelper.getString(SharedPrefKeys.userName);
+    return userName;
   }
 }

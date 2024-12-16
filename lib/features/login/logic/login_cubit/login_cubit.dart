@@ -27,6 +27,8 @@ class LoginCubit extends Cubit<LoginState> {
       success: (loginResponse) async {
         await saveUserToken(loginResponse.token!);
         await saveUserId(loginResponse.data!.id!);
+        await saveUserName(loginResponse.data!.name!);
+        await saveUserCode(loginResponse.data!.code!);
         emit(LoginState.success(loginResponse));
       },
       failure: (error) {
@@ -51,6 +53,6 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   Future<void> saveUserCode(String code) async {
-    await SharedPrefHelper.setData(SharedPrefKeys.userId, code);
+    await SharedPrefHelper.setData(SharedPrefKeys.userCode, code);
   }
 }

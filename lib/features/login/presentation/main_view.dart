@@ -25,16 +25,6 @@ class _MainViewState extends State<MainView> {
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  Future<String> getUserName() async {
-    final userName = await SharedPrefHelper.getString(SharedPrefKeys.userName);
-    return userName;
-  }
-
-  Future<String> getUserCode() async {
-    final userCode = await SharedPrefHelper.getString(SharedPrefKeys.userCode);
-    return userCode;
-  }
-
   List<Widget> _buildScreens() {
     return [
       Center(
@@ -120,11 +110,24 @@ class _MainViewState extends State<MainView> {
     ];
   }
 
+  String? userName;
+  String? userCode;
+
   @override
   void initState() {
     super.initState();
-    getUserName();
-    getUserCode();
+    _loadUserDetails();
+  }
+
+  Future<void> _loadUserDetails() async {
+    // Fetch user details from SharedPreferences
+    final name = await SharedPrefHelper.getString(SharedPrefKeys.userName);
+    final code = await SharedPrefHelper.getString(SharedPrefKeys.userCode);
+
+    setState(() {
+      userName = name;
+      userCode = code;
+    });
   }
 
   @override
@@ -224,12 +227,12 @@ class _MainViewState extends State<MainView> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            getUserName().toString(),
+                            userName ?? 'Omar',
                             style: Styles.font15WhiteBold,
                           ),
                           verticalSpace(8),
                           Text(
-                            getUserCode().toString(),
+                            userCode ?? '00000',
                             style: Styles.font15WhiteBold.copyWith(
                               // ignore: deprecated_member_use
                               color: Colors.white.withOpacity(0.5),
@@ -331,16 +334,26 @@ class _MainViewState extends State<MainView> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const SizedBox(height: 60 + 40 - 11),
-                    GestureDetector(
-                      onTap: () {
+                    const SizedBox(height: 60 + 40 - 11 - 13),
+                    IconButton(
+                      padding: EdgeInsets.zero,
+                      onPressed: () {
                         Navigator.pop(context);
                       },
-                      child: SvgPicture.asset(
+                      icon: SvgPicture.asset(
                         'assets/svgs/close_icon.svg',
                         height: 20,
                       ),
                     ),
+                    // InkWell(
+                    //   onTap: () {
+                    //     Navigator.pop(context);
+                    //   },
+                    //   child: SvgPicture.asset(
+                    //     'assets/svgs/close_icon.svg',
+                    //     height: 20,
+                    //   ),
+                    // ),
                   ],
                 ),
               ),

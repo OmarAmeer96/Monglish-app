@@ -19,3 +19,13 @@ Future<void> printUserId() async {
   int? userId = await SharedPrefHelper.getInt(SharedPrefKeys.userId);
   debugPrint('User Id: $userId');
 }
+
+Future<void> printUserName() async {
+  String? userName = await SharedPrefHelper.getString(SharedPrefKeys.userName);
+  debugPrint('User Name: $userName');
+}
+
+Future<void> printUserCode() async {
+  String? userCode = await SharedPrefHelper.getString(SharedPrefKeys.userCode);
+  debugPrint('User Code: $userCode');
+}

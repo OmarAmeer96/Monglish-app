@@ -1,3 +1,4 @@
+
 bool isUserLoggedIn = false;
 
 class SharedPrefKeys {
