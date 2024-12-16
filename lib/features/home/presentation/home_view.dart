@@ -5,6 +5,7 @@ import 'package:monglish_app/core/helpers/spacing.dart';
 import 'package:monglish_app/core/theming/colors_manager.dart';
 import 'package:monglish_app/core/theming/styles.dart';
 import 'package:monglish_app/core/widgets/app_bar_container.dart';
+import 'package:monglish_app/core/widgets/custom_main_button.dart';
 import 'package:monglish_app/features/home/logic/students_cubit/students_cubit.dart';
 import 'package:monglish_app/features/home/logic/students_cubit/students_state.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_current_level_section.dart';
@@ -58,147 +59,13 @@ class _HomeViewState extends State<HomeView> {
             builder: (context, state) {
               return state.maybeWhen(
                 loading: () {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
+                  return setupsLoadingState();
                 },
                 success: (studentsResponse) {
-                  return Stack(
-                    children: [
-                      const Positioned(
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        child: AppBarContainer(
-                          child: Center(
-                            child: HomeViewAppBar(),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        top: 130.h,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            color: Color(0xfff1f5ff),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(16),
-                              topRight: Radius.circular(16),
-                            ),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                              left: 16,
-                              right: 16,
-                              top: 0,
-                            ),
-                            child: Scrollbar(
-                              child: SingleChildScrollView(
-                                physics: const BouncingScrollPhysics(),
-                                child: Column(
-                                  children: [
-                                    verticalSpace(16),
-                                    HomePersonalInfoSection(
-                                      studentsResponse: studentsResponse,
-                                    ),
-                                    verticalSpace(16),
-                                    HomeCurrentLevelSection(
-                                      studentsResponse: studentsResponse,
-                                    ),
-                                    verticalSpace(16),
-                                    HomePackageClubsSection(
-                                      studentsResponse: studentsResponse,
-                                    ),
-                                    verticalSpace(16),
-
-                                    // Table Calendar
-                                    HomeViewColoredContainer(
-                                      color: const Color(0xFFFFFFFF),
-                                      child: TableCalendar(
-                                        firstDay: DateTime.utc(2024, 1, 1),
-                                        lastDay: DateTime.utc(2025, 12, 31),
-                                        focusedDay: _focusedDay,
-                                        calendarFormat: _calendarFormat,
-                                        selectedDayPredicate: (day) =>
-                                            isSameDay(_selectedDay, day),
-                                        eventLoader: _getEventsForDay,
-                                        calendarStyle: const CalendarStyle(
-                                          todayDecoration: BoxDecoration(
-                                            color: ColorsManager.mainBlue,
-                                            shape: BoxShape.circle,
-                                          ),
-                                          selectedDecoration: BoxDecoration(
-                                            color: ColorsManager.mainOrange,
-                                            shape: BoxShape.circle,
-                                          ),
-                                        ),
-                                        onDaySelected:
-                                            (selectedDay, focusedDay) {
-                                          setState(() {
-                                            _selectedDay = selectedDay;
-                                            _focusedDay = focusedDay;
-                                          });
-                                        },
-                                        onFormatChanged: (format) {
-                                          setState(() {
-                                            _calendarFormat = format;
-                                          });
-                                        },
-                                        onPageChanged: (focusedDay) {
-                                          _focusedDay = focusedDay;
-                                        },
-                                      ),
-                                    ),
-                                    verticalSpace(16),
-
-                                    // Event List Section
-                                    if (_selectedDay != null)
-                                      _buildEventList(_selectedDay!),
-
-                                    verticalSpace(16),
-                                    HomeLevelSection(
-                                      studentsResponse: studentsResponse,
-                                    ),
-                                    verticalSpace(16),
-                                    HomeRewardsSection(
-                                      studentsResponse: studentsResponse,
-                                    ),
-                                    verticalSpace(16),
-                                    HomeFeedbackSection(
-                                      studentsResponse: studentsResponse,
-                                    ),
-                                    verticalSpace(12),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  );
+                  return setupSuccessState(studentsResponse);
                 },
                 error: (errorHandler) {
-                  return Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "state",
-                          style: Styles.font12BlackRegular,
-                        ),
-                        verticalSpace(16),
-                        ElevatedButton(
-                          onPressed: () {
-                            context.read<StudentsCubit>().getStudents();
-                          },
-                          child: const Text('Retry'),
-                        ),
-                      ],
-                    ),
-                  );
+                  return setupErrorState(context);
                 },
                 orElse: () => const SizedBox.shrink(),
               );
@@ -206,6 +73,160 @@ class _HomeViewState extends State<HomeView> {
           ),
         ),
       ),
+    );
+  }
+
+  Center setupsLoadingState() {
+    return const Center(
+      child: CircularProgressIndicator(),
+    );
+  }
+
+  Center setupErrorState(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'An error occurred while fetching data, please try again later',
+              textAlign: TextAlign.center,
+              style: Styles.font18BlackBold.copyWith(
+                fontSize: 20,
+              ),
+            ),
+            verticalSpace(16),
+            CustomMainButton(
+              buttonWidth: 150.w,
+              textStyle: Styles.font20WhiteBold.copyWith(
+                fontSize: 20,
+              ),
+              onPressed: () {
+                context.read<StudentsCubit>().getStudents();
+              },
+              buttonText: 'Retry',
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Stack setupSuccessState(studentsResponse) {
+    return Stack(
+      children: [
+        const Positioned(
+          top: 0,
+          left: 0,
+          right: 0,
+          child: AppBarContainer(
+            child: Center(
+              child: HomeViewAppBar(),
+            ),
+          ),
+        ),
+        Positioned(
+          top: 130.h,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          child: Container(
+            decoration: const BoxDecoration(
+              color: Color(0xfff1f5ff),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(16),
+                topRight: Radius.circular(16),
+              ),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(
+                left: 16,
+                right: 16,
+                top: 0,
+              ),
+              child: Scrollbar(
+                child: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  child: Column(
+                    children: [
+                      verticalSpace(16),
+                      HomePersonalInfoSection(
+                        studentsResponse: studentsResponse,
+                      ),
+                      verticalSpace(16),
+                      HomeCurrentLevelSection(
+                        studentsResponse: studentsResponse,
+                      ),
+                      verticalSpace(16),
+                      HomePackageClubsSection(
+                        studentsResponse: studentsResponse,
+                      ),
+                      verticalSpace(16),
+
+                      // Table Calendar
+                      HomeViewColoredContainer(
+                        color: const Color(0xFFFFFFFF),
+                        child: TableCalendar(
+                          firstDay: DateTime.utc(2024, 1, 1),
+                          lastDay: DateTime.utc(2025, 12, 31),
+                          focusedDay: _focusedDay,
+                          calendarFormat: _calendarFormat,
+                          selectedDayPredicate: (day) =>
+                              isSameDay(_selectedDay, day),
+                          eventLoader: _getEventsForDay,
+                          calendarStyle: const CalendarStyle(
+                            todayDecoration: BoxDecoration(
+                              color: ColorsManager.mainBlue,
+                              shape: BoxShape.circle,
+                            ),
+                            selectedDecoration: BoxDecoration(
+                              color: ColorsManager.mainOrange,
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                          onDaySelected: (selectedDay, focusedDay) {
+                            setState(() {
+                              _selectedDay = selectedDay;
+                              _focusedDay = focusedDay;
+                            });
+                          },
+                          onFormatChanged: (format) {
+                            setState(() {
+                              _calendarFormat = format;
+                            });
+                          },
+                          onPageChanged: (focusedDay) {
+                            _focusedDay = focusedDay;
+                          },
+                        ),
+                      ),
+                      verticalSpace(16),
+
+                      // Event List Section
+                      if (_selectedDay != null) _buildEventList(_selectedDay!),
+
+                      verticalSpace(16),
+                      HomeLevelSection(
+                        studentsResponse: studentsResponse,
+                      ),
+                      verticalSpace(16),
+                      HomeRewardsSection(
+                        studentsResponse: studentsResponse,
+                      ),
+                      verticalSpace(16),
+                      HomeFeedbackSection(
+                        studentsResponse: studentsResponse,
+                      ),
+                      verticalSpace(12),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 
