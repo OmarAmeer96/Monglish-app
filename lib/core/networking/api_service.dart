@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:monglish_app/core/networking/api_constants.dart';
+import 'package:monglish_app/features/home/data/models/students_model/students.dart';
 import 'package:monglish_app/features/login/data/models/login_request_body.dart';
 import 'package:monglish_app/features/login/data/models/login_response/login_response.dart';
 import 'package:retrofit/error_logger.dart';
@@ -14,6 +15,13 @@ abstract class ApiService {
   Future<LoginResponse> login(
     @Body() LoginRequestBody loginRequestBody,
   );
+
+  // Get Products with Pagination
+  @GET(ApiConstants.getStudents)
+  Future<Students> getProducts({
+    @Header('Authorization') String token,
+    @Query('id') int id,
+  });
 
   // @POST(ApiConstants.signup)
   // Future<SignupResponse> signup(
