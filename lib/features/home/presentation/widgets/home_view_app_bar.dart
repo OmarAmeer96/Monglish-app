@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:monglish_app/core/helpers/spacing.dart';
+import 'package:monglish_app/features/home/presentation/widgets/custom_search_text_field.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_profile_picture.dart';
 
 class HomeViewAppBar extends StatefulWidget {
@@ -38,25 +40,16 @@ class _HomeViewAppBarState extends State<HomeViewAppBar> {
                   'assets/svgs/notifications_icon.svg',
                 ),
               ),
-              // Animate the width of the search bar
               AnimatedContainer(
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.easeInOut,
                 width: _isSearchOpen
                     ? MediaQuery.of(context).size.width * 0.55
                     : 0,
+                height: 40.h,
                 child: _isSearchOpen
-                    ? TextField(
-                        decoration: InputDecoration(
-                          hintText: 'Search...',
-                          suffixIcon: IconButton(
-                            icon: const Icon(Icons.close),
-                            onPressed: _toggleSearch,
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                        ),
+                    ? CustomSearchTextField(
+                        onTap: _toggleSearch,
                       )
                     : const SizedBox.shrink(),
               ),
