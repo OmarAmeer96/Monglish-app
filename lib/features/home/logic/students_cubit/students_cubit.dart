@@ -28,9 +28,7 @@ class StudentsCubit extends Cubit<StudentsState> {
     );
     response.when(
       success: (studentsResponse) {
-        if (state is Success) {
-          emit(StudentsState.success(studentsResponse));
-        }
+        emit(StudentsState.success(studentsResponse));
       },
       failure: (error) {
         emit(
