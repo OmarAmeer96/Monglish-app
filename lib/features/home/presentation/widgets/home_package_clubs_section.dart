@@ -32,18 +32,24 @@ class HomePackageClubsSection extends StatelessWidget {
           verticalSpace(12),
           Column(
             children: [
-              const HomePackageClubsSectionRow(
+              HomePackageClubsSectionRow(
+                availableClubs1:
+                    studentsResponse.data!.packageClubs![0].sessions!,
+                takenClubs1: studentsResponse.data!.packageClubs![0].count!,
                 icon1: 'assets/images/reading_club.png',
-                title1: 'Reading Club',
-                icon2: 'assets/images/reading_club.png',
+                title1: studentsResponse.data!.packageClubs![0].name!,
+                icon2: 'assets/images/writing_club.png',
                 title2: 'Writing Club',
               ),
               verticalSpace(10),
-              const HomePackageClubsSectionRow(
-                icon1: 'assets/images/reading_club.png',
+              HomePackageClubsSectionRow(
+                icon1: 'assets/images/songs_club.png',
                 title1: 'Songs Club',
-                icon2: 'assets/images/reading_club.png',
-                title2: 'Debates Club',
+                availableClubs2:
+                    studentsResponse.data!.packageClubs![2].sessions!,
+                takenClubs2: studentsResponse.data!.packageClubs![2].count!,
+                icon2: 'assets/images/debates_club.png',
+                title2: studentsResponse.data!.packageClubs![2].name!,
               ),
               verticalSpace(10),
               const HomePackageClubsSectionRow(
@@ -53,9 +59,12 @@ class HomePackageClubsSection extends StatelessWidget {
                 title2: 'Art Club',
               ),
               verticalSpace(10),
-              const HomePackageClubsSectionRow(
+              HomePackageClubsSectionRow(
                 icon1: 'assets/images/speaking_club.png',
-                title1: 'Speaking Club',
+                title1: studentsResponse.data!.packageClubs![1].name!,
+                availableClubs1:
+                    studentsResponse.data!.packageClubs![1].sessions!,
+                takenClubs1: studentsResponse.data!.packageClubs![1].count!,
                 icon2: 'assets/images/movie_club.png',
                 title2: 'Movie Club',
               ),

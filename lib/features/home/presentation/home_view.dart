@@ -34,8 +34,8 @@ class _HomeViewState extends State<HomeView> {
 
   // Event Map: Date as Key, List of Events as Value
   final Map<DateTime, List<String>> _events = {
-    DateTime.utc(2024, 12, 3): ['Reading Club at 5 PM'],
-    DateTime.utc(2024, 12, 11): ['Movie Club at 5 PM'],
+    DateTime.utc(2024, 12, 3): ['Reading Club'],
+    DateTime.utc(2024, 12, 11): ['Movie Club'],
   };
 
   @override
@@ -247,14 +247,14 @@ class _HomeViewState extends State<HomeView> {
     final events = _getEventsForDay(day);
 
     return AnimatedSwitcher(
-      duration: const Duration(milliseconds: 400), // Animation duration
-      switchInCurve: Curves.easeIn, // Curve for appearing animation
-      switchOutCurve: Curves.easeOut, // Curve for disappearing animation
+      duration: const Duration(milliseconds: 400),
+      switchInCurve: Curves.easeIn,
+      switchOutCurve: Curves.easeOut,
       child: events.isEmpty
-          ? const SizedBox.shrink() // Return an empty widget if no events
+          ? const SizedBox.shrink()
           : Align(
               alignment: Alignment.centerLeft,
-              key: ValueKey(events), // Ensure animation triggers correctly
+              key: ValueKey(events),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -288,15 +288,15 @@ class _HomeViewState extends State<HomeView> {
                               children: [
                                 Text(
                                   event,
-                                  style: Styles.font13BlackMedium,
+                                  style: Styles.font12BlackMedium,
                                 ),
                                 Text(
-                                  'event',
-                                  style: Styles.font13BlackMedium,
+                                  'Tuesday 3/12/2024',
+                                  style: Styles.font12BlackMedium,
                                 ),
                                 Text(
-                                  'event',
-                                  style: Styles.font13BlackMedium,
+                                  '5 PM : 6 PM',
+                                  style: Styles.font12BlackMedium,
                                 ),
                               ],
                             ),

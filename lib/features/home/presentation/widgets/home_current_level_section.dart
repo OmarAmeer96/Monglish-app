@@ -32,35 +32,38 @@ class HomeCurrentLevelSection extends StatelessWidget {
           verticalSpace(12),
           Column(
             children: [
-              const Row(
+              Row(
                 children: [
                   Expanded(
                     child: HomeColoredContainerIconAndTextItem(
                       icon: 'assets/svgs/current_level_icon.svg',
-                      title: "LG Kids - Juniors - Level 2",
+                      title: "${studentsResponse.data!.level!.name}",
                     ),
                   ),
                   Expanded(
                     child: HomeColoredContainerIconAndTextItem(
                       icon: 'assets/svgs/remaining_levels_icon.svg',
-                      title: "2 Remaining Levels",
+                      title:
+                          "${studentsResponse.data!.remainingLevels} Remaining Levels",
                     ),
                   )
                 ],
               ),
               verticalSpace(12),
-              const Row(
+              Row(
                 children: [
                   Expanded(
                     child: HomeColoredContainerIconAndTextItem(
                       icon: 'assets/svgs/status_icon.svg',
-                      title: "Active",
+                      title: "${studentsResponse.data!.statusType!.name}",
                     ),
                   ),
                   Expanded(
                     child: HomeColoredContainerIconAndTextItem(
                       icon: 'assets/svgs/expire_date_icon.svg',
-                      title: "Old Package expires on 16/12/2024",
+                      title: studentsResponse.data!.isPackageExpired!
+                          ? "Expired"
+                          : "Expires on ${studentsResponse.data!.packageExpireAt!.toLocal().toString().split(' ')[0]}",
                     ),
                   ),
                 ],

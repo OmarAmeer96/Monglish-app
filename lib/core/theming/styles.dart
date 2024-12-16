@@ -64,9 +64,9 @@ class Styles {
     fontFamily: FontFamilyHelper.montserratBold,
   );
 
-  static TextStyle font13BlackMedium = const TextStyle(
-    color: Color(0xFF434050),
-    fontSize: 14,
+  static TextStyle font12BlackMedium = TextStyle(
+    color: const Color(0xFF434050),
+    fontSize: 12.sp,
     fontFamily: FontFamilyHelper.quicksandMedium,
   );
 

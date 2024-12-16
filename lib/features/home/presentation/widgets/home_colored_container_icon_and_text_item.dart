@@ -12,11 +12,14 @@ class HomeColoredContainerIconAndTextItem extends StatelessWidget {
     required this.title,
     this.titleStyles,
     this.isPackageClub = false,
+    this.availableClubs,
+    this.takenClubs,
   });
 
   final String icon, title;
   final TextStyle? titleStyles;
   final bool isPackageClub;
+  final int? availableClubs, takenClubs;
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +76,7 @@ class HomeColoredContainerIconAndTextItem extends StatelessWidget {
                             ),
                           ),
                           TextSpan(
-                            text: "5",
+                            text: availableClubs.toString(),
                             style: Styles.font14BlackMedium.copyWith(
                               color: const Color(0xFF434050),
                               fontSize: 12.sp,
@@ -88,7 +91,7 @@ class HomeColoredContainerIconAndTextItem extends StatelessWidget {
                             ),
                           ),
                           TextSpan(
-                            text: "3",
+                            text: takenClubs.toString(),
                             style: Styles.font14BlackMedium.copyWith(
                               color: const Color(0xFF434050),
                               fontSize: 12.sp,
