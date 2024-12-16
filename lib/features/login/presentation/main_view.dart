@@ -249,7 +249,7 @@ class _MainViewState extends State<MainView> {
                         icon: 'assets/svgs/drawer_schools_icon.svg',
                         title: 'Schools',
                         onTap: () {
-                          debugPrint("Classes Clicked");
+                          debugPrint("Schools Clicked");
                         },
                       ),
                       verticalSpace(18),
