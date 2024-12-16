@@ -5,9 +5,11 @@ import 'package:monglish_app/core/helpers/spacing.dart';
 import 'package:monglish_app/core/theming/colors_manager.dart';
 import 'package:monglish_app/core/theming/styles.dart';
 import 'package:monglish_app/core/widgets/app_bar_container.dart';
+import 'package:monglish_app/core/widgets/custom_fading_widget.dart';
 import 'package:monglish_app/core/widgets/custom_main_button.dart';
 import 'package:monglish_app/features/home/logic/students_cubit/students_cubit.dart';
 import 'package:monglish_app/features/home/logic/students_cubit/students_state.dart';
+import 'package:monglish_app/features/home/presentation/widgets/custom_home_item_loading_widget.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_current_level_section.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_feed_back_section.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_level_section.dart';
@@ -53,36 +55,83 @@ class _HomeViewState extends State<HomeView> {
           onRefresh: () async {
             context.read<StudentsCubit>().getStudents();
           },
-          child: BlocBuilder<StudentsCubit, StudentsState>(
-            buildWhen: (previous, current) =>
-                current is Loading || current is Success || current is Error,
-            builder: (context, state) {
-              return state.maybeWhen(
-                loading: () {
-                  return setupsLoadingState();
-                },
-                success: (studentsResponse) {
-                  return setupSuccessState(studentsResponse);
-                },
-                error: (errorHandler) {
-                  return setupErrorState(context);
-                },
-                orElse: () => const SizedBox.shrink(),
-              );
-            },
+          child: Stack(
+            children: [
+              const Positioned(
+                top: 0,
+                left: 0,
+                right: 0,
+                child: AppBarContainer(
+                  child: Center(
+                    child: HomeViewAppBar(),
+                  ),
+                ),
+              ),
+              Positioned(
+                top: 130.h,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                child: Container(
+                  decoration: const BoxDecoration(
+                    color: Color(0xfff1f5ff),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(16),
+                      topRight: Radius.circular(16),
+                    ),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      left: 16,
+                      right: 16,
+                      top: 0,
+                    ),
+                    child: Scrollbar(
+                      child: SingleChildScrollView(
+                        physics: const BouncingScrollPhysics(),
+                        child: BlocBuilder<StudentsCubit, StudentsState>(
+                          buildWhen: (previous, current) =>
+                              current is Loading ||
+                              current is Success ||
+                              current is Error,
+                          builder: (context, state) {
+                            return state.maybeWhen(
+                              loading: () {
+                                return setupsLoadingState();
+                              },
+                              success: (studentsResponse) {
+                                // return setupsLoadingState();
+                                return setupSuccessState(studentsResponse);
+                              },
+                              error: (errorHandler) {
+                                return setupErrorState(context);
+                              },
+                              orElse: () => const SizedBox.shrink(),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
     );
   }
 
-  Center setupsLoadingState() {
-    return const Center(
-      child: CircularProgressIndicator(),
+  Widget setupsLoadingState() {
+    return const CustomFadingWidget(
+      child: Padding(
+        padding: EdgeInsets.only(top: 16),
+        child: CustomHomeItemLoadingWidget(),
+      ),
     );
   }
 
-  Center setupErrorState(BuildContext context) {
+  Widget setupErrorState(BuildContext context) {
     return Center(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -113,119 +162,77 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 
-  Stack setupSuccessState(studentsResponse) {
-    return Stack(
+  Widget setupSuccessState(studentsResponse) {
+    return Column(
       children: [
-        const Positioned(
-          top: 0,
-          left: 0,
-          right: 0,
-          child: AppBarContainer(
-            child: Center(
-              child: HomeViewAppBar(),
+        verticalSpace(16),
+        HomePersonalInfoSection(
+          studentsResponse: studentsResponse,
+        ),
+        verticalSpace(16),
+        HomeCurrentLevelSection(
+          studentsResponse: studentsResponse,
+        ),
+        verticalSpace(16),
+        HomePackageClubsSection(
+          studentsResponse: studentsResponse,
+        ),
+        verticalSpace(16),
+
+        // Table Calendar
+        HomeViewColoredContainer(
+          color: const Color(0xFFFFFFFF),
+          child: TableCalendar(
+            firstDay: DateTime.utc(2024, 1, 1),
+            lastDay: DateTime.utc(2025, 12, 31),
+            focusedDay: _focusedDay,
+            calendarFormat: _calendarFormat,
+            selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
+            eventLoader: _getEventsForDay,
+            calendarStyle: const CalendarStyle(
+              todayDecoration: BoxDecoration(
+                color: ColorsManager.mainBlue,
+                shape: BoxShape.circle,
+              ),
+              selectedDecoration: BoxDecoration(
+                color: ColorsManager.mainOrange,
+                shape: BoxShape.circle,
+              ),
             ),
+            onDaySelected: (selectedDay, focusedDay) {
+              setState(() {
+                _selectedDay = selectedDay;
+                _focusedDay = focusedDay;
+              });
+            },
+            onFormatChanged: (format) {
+              setState(() {
+                _calendarFormat = format;
+              });
+            },
+            onPageChanged: (focusedDay) {
+              _focusedDay = focusedDay;
+            },
           ),
         ),
-        Positioned(
-          top: 130.h,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          child: Container(
-            decoration: const BoxDecoration(
-              color: Color(0xfff1f5ff),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(16),
-                topRight: Radius.circular(16),
-              ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.only(
-                left: 16,
-                right: 16,
-                top: 0,
-              ),
-              child: Scrollbar(
-                child: SingleChildScrollView(
-                  physics: const BouncingScrollPhysics(),
-                  child: Column(
-                    children: [
-                      verticalSpace(16),
-                      HomePersonalInfoSection(
-                        studentsResponse: studentsResponse,
-                      ),
-                      verticalSpace(16),
-                      HomeCurrentLevelSection(
-                        studentsResponse: studentsResponse,
-                      ),
-                      verticalSpace(16),
-                      HomePackageClubsSection(
-                        studentsResponse: studentsResponse,
-                      ),
-                      verticalSpace(16),
+        verticalSpace(16),
 
-                      // Table Calendar
-                      HomeViewColoredContainer(
-                        color: const Color(0xFFFFFFFF),
-                        child: TableCalendar(
-                          firstDay: DateTime.utc(2024, 1, 1),
-                          lastDay: DateTime.utc(2025, 12, 31),
-                          focusedDay: _focusedDay,
-                          calendarFormat: _calendarFormat,
-                          selectedDayPredicate: (day) =>
-                              isSameDay(_selectedDay, day),
-                          eventLoader: _getEventsForDay,
-                          calendarStyle: const CalendarStyle(
-                            todayDecoration: BoxDecoration(
-                              color: ColorsManager.mainBlue,
-                              shape: BoxShape.circle,
-                            ),
-                            selectedDecoration: BoxDecoration(
-                              color: ColorsManager.mainOrange,
-                              shape: BoxShape.circle,
-                            ),
-                          ),
-                          onDaySelected: (selectedDay, focusedDay) {
-                            setState(() {
-                              _selectedDay = selectedDay;
-                              _focusedDay = focusedDay;
-                            });
-                          },
-                          onFormatChanged: (format) {
-                            setState(() {
-                              _calendarFormat = format;
-                            });
-                          },
-                          onPageChanged: (focusedDay) {
-                            _focusedDay = focusedDay;
-                          },
-                        ),
-                      ),
-                      verticalSpace(16),
+        // Event List Section
+        if (_selectedDay != null) _buildEventList(_selectedDay!),
 
-                      // Event List Section
-                      if (_selectedDay != null) _buildEventList(_selectedDay!),
-
-                      verticalSpace(16),
-                      HomeLevelSection(
-                        studentsResponse: studentsResponse,
-                      ),
-                      verticalSpace(16),
-                      HomeRewardsSection(
-                        studentsResponse: studentsResponse,
-                      ),
-                      verticalSpace(16),
-                      HomeFeedbackSection(
-                        studentsResponse: studentsResponse,
-                      ),
-                      verticalSpace(12),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
+        verticalSpace(16),
+        HomeLevelSection(
+          studentsResponse: studentsResponse,
         ),
+        verticalSpace(16),
+        HomeRewardsSection(
+          studentsResponse: studentsResponse,
+        ),
+        verticalSpace(16),
+        HomeFeedbackSection(
+          studentsResponse: studentsResponse,
+        ),
+        verticalSpace(12),
       ],
     );
   }
