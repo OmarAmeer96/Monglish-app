@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:monglish_app/core/helpers/spacing.dart';
 import 'package:monglish_app/core/theming/styles.dart';
+import 'package:monglish_app/features/home/data/models/students_model/students.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_colored_container_icon_and_text_item.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_profile_picture.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_view_colored_container.dart';
@@ -8,7 +9,10 @@ import 'package:monglish_app/features/home/presentation/widgets/home_view_colore
 class HomePersonalInfoSection extends StatelessWidget {
   const HomePersonalInfoSection({
     super.key,
+    required this.studentsResponse,
   });
+
+  final Students studentsResponse;
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +28,13 @@ class HomePersonalInfoSection extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Omar Ameer",
+                    studentsResponse.data!.name!,
                     style: Styles.font16BlackBold.copyWith(
                       color: const Color(0xFF434050),
                     ),
                   ),
                   Text(
-                    "5545",
+                    studentsResponse.data!.code!,
                     style: Styles.font14OrangeMedium.copyWith(
                       color: const Color(0xFF434050),
                     ),
@@ -42,15 +46,15 @@ class HomePersonalInfoSection extends StatelessWidget {
           verticalSpace(14),
           Column(
             children: [
-              const Row(
+              Row(
                 children: [
                   Expanded(
                     child: HomeColoredContainerIconAndTextItem(
                       icon: 'assets/svgs/phone_icon.svg',
-                      title: "+20 15 5411 1002",
+                      title: studentsResponse.data!.mobile!,
                     ),
                   ),
-                  Expanded(
+                  const Expanded(
                     child: HomeColoredContainerIconAndTextItem(
                       icon: 'assets/svgs/birth_icon.svg',
                       title: "26/8/2002",
@@ -59,23 +63,23 @@ class HomePersonalInfoSection extends StatelessWidget {
                 ],
               ),
               verticalSpace(12),
-              const Row(
+              Row(
                 children: [
                   Expanded(
                     flex: 5,
                     child: HomeColoredContainerIconAndTextItem(
                       icon: 'assets/svgs/email_icon.svg',
-                      title: "omar.ameer244@gmail.com",
+                      title: studentsResponse.data!.email!,
                     ),
                   ),
-                  Expanded(
+                  const Expanded(
                     flex: 3,
                     child: HomeColoredContainerIconAndTextItem(
                       icon: 'assets/svgs/nationality_icon.svg',
                       title: "Egyptian",
                     ),
                   ),
-                  Expanded(
+                  const Expanded(
                     flex: 2,
                     child: HomeColoredContainerIconAndTextItem(
                       icon: 'assets/svgs/gender_icon.svg',

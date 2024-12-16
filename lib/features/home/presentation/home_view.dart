@@ -62,7 +62,7 @@ class _HomeViewState extends State<HomeView> {
                     child: CircularProgressIndicator(),
                   );
                 },
-                success: (specializationsResponseModel) {
+                success: (studentsResponse) {
                   return Stack(
                     children: [
                       const Positioned(
@@ -100,11 +100,17 @@ class _HomeViewState extends State<HomeView> {
                                 child: Column(
                                   children: [
                                     verticalSpace(16),
-                                    const HomePersonalInfoSection(),
+                                    HomePersonalInfoSection(
+                                      studentsResponse: studentsResponse,
+                                    ),
                                     verticalSpace(16),
-                                    const HomeCurrentLevelSection(),
+                                    HomeCurrentLevelSection(
+                                      studentsResponse: studentsResponse,
+                                    ),
                                     verticalSpace(16),
-                                    const HomePackageClubsSection(),
+                                    HomePackageClubsSection(
+                                      studentsResponse: studentsResponse,
+                                    ),
                                     verticalSpace(16),
 
                                     // Table Calendar
@@ -152,11 +158,17 @@ class _HomeViewState extends State<HomeView> {
                                       _buildEventList(_selectedDay!),
 
                                     verticalSpace(16),
-                                    const HomeLevelSection(),
+                                    HomeLevelSection(
+                                      studentsResponse: studentsResponse,
+                                    ),
                                     verticalSpace(16),
-                                    const HomeRewardsSection(),
+                                    HomeRewardsSection(
+                                      studentsResponse: studentsResponse,
+                                    ),
                                     verticalSpace(16),
-                                    const HomeFeedbackSection(),
+                                    HomeFeedbackSection(
+                                      studentsResponse: studentsResponse,
+                                    ),
                                     verticalSpace(12),
                                   ],
                                 ),

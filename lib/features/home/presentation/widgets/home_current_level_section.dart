@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:monglish_app/core/helpers/spacing.dart';
 import 'package:monglish_app/core/theming/styles.dart';
+import 'package:monglish_app/features/home/data/models/students_model/students.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_colored_container_icon_and_text_item.dart';
 import 'package:monglish_app/features/home/presentation/widgets/home_view_colored_container.dart';
 
 class HomeCurrentLevelSection extends StatelessWidget {
   const HomeCurrentLevelSection({
     super.key,
+    required this.studentsResponse,
   });
+
+  final Students studentsResponse;
 
   @override
   Widget build(BuildContext context) {
