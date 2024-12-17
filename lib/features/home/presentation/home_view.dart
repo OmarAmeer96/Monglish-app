@@ -101,6 +101,7 @@ class _HomeViewState extends State<HomeView> {
                               },
                               success: (studentsResponse) {
                                 // return setupsLoadingState();
+                                // return setupErrorState(context);
                                 return setupSuccessState(studentsResponse);
                               },
                               error: (errorHandler) {
@@ -133,7 +134,11 @@ class _HomeViewState extends State<HomeView> {
 
   Widget setupErrorState(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: EdgeInsets.only(
+        top: MediaQuery.of(context).size.height * 0.3,
+        left: 16,
+        right: 16,
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
