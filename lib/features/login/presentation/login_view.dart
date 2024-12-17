@@ -7,6 +7,7 @@ import 'package:monglish_app/core/theming/styles.dart';
 import 'package:monglish_app/core/widgets/app_bar_container.dart';
 import 'package:monglish_app/core/widgets/custom_main_button.dart';
 import 'package:monglish_app/features/login/logic/login_cubit/login_cubit.dart';
+import 'package:monglish_app/features/login/logic/login_cubit/login_state.dart';
 import 'package:monglish_app/features/login/presentation/widgets/login_bloc_listener.dart';
 import 'package:monglish_app/features/login/presentation/widgets/login_email_and_password_widget.dart';
 
@@ -54,12 +55,9 @@ class LoginView extends StatelessWidget {
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 24.w,
-                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 24.w),
                   child: SingleChildScrollView(
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         verticalSpace(100),
                         Text(
@@ -80,14 +78,20 @@ class LoginView extends StatelessWidget {
                           ),
                         ),
                         verticalSpace(42),
-                        CustomMainButton(
-                          textStyle: Styles.font20WhiteBold.copyWith(
-                            fontSize: 20,
-                          ),
-                          onPressed: () {
-                            validateThenLogin(context);
+                        BlocBuilder<LoginCubit, LoginState>(
+                          builder: (context, state) {
+                            return CustomMainButton(
+                              textStyle: Styles.font20WhiteBold.copyWith(
+                                fontSize: 20,
+                              ),
+                              isLoading: state
+                                  is Loading, // Show loader when state is Loading
+                              onPressed: () {
+                                validateThenLogin(context);
+                              },
+                              buttonText: 'Login',
+                            );
                           },
-                          buttonText: 'Login',
                         ),
                         verticalSpace(60),
                         const LoginBlocListener(),

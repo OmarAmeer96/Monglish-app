@@ -75,6 +75,8 @@ dependencies:
   persistent_bottom_nav_bar: ^6.2.1
   # Dotted Divider
   dotted_line: ^3.2.3
+  # Loading spinner.
+  flutter_spinkit: ^5.2.1
 
 dev_dependencies:
   flutter_test:

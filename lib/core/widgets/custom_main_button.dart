@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:monglish_app/core/theming/colors_manager.dart';
 import 'package:monglish_app/core/theming/styles.dart';
 
@@ -12,7 +13,9 @@ class CustomMainButton extends StatelessWidget {
   final double? buttonHeight;
   final String buttonText;
   final TextStyle? textStyle;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
+  final bool isLoading; // New parameter to indicate loading state
+
   const CustomMainButton({
     super.key,
     this.borderRadius,
@@ -24,6 +27,7 @@ class CustomMainButton extends StatelessWidget {
     required this.buttonText,
     this.textStyle,
     required this.onPressed,
+    this.isLoading = false, // Default value is false
   });
 
   @override
@@ -48,11 +52,17 @@ class CustomMainButton extends StatelessWidget {
           Size(buttonWidth?.w ?? double.maxFinite, buttonHeight ?? 50.h),
         ),
       ),
-      onPressed: onPressed,
-      child: Text(
-        buttonText,
-        style: textStyle ?? Styles.font20WhiteBold,
-      ),
+      onPressed: isLoading ? null : onPressed, // Disable button when loading
+      child: isLoading
+          ? SpinKitThreeBounce(
+                // Smooth loading animation.
+                color: Colors.white,
+                size: 20,
+              )
+          : Text(
+              buttonText,
+              style: textStyle ?? Styles.font20WhiteBold,
+            ),
     );
   }
 }
