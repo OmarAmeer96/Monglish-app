@@ -35,7 +35,7 @@ class LoadingItem extends StatelessWidget {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Colors.grey[600],
+        color: Colors.grey[500],
         borderRadius: BorderRadius.circular(10.r),
       ),
       child: Padding(
@@ -47,7 +47,7 @@ class LoadingItem extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 20.r,
-                  backgroundColor: Colors.grey[400],
+                  backgroundColor: Colors.grey[300],
                 ),
                 SizedBox(width: 10.w),
                 Column(
@@ -56,13 +56,13 @@ class LoadingItem extends StatelessWidget {
                     Container(
                       width: 150.w,
                       height: 10.h,
-                      color: Colors.grey[400],
+                      color: Colors.grey[300],
                     ),
                     SizedBox(height: 5.h),
                     Container(
                       width: 80.w,
                       height: 10.h,
-                      color: Colors.grey[400],
+                      color: Colors.grey[300],
                     ),
                   ],
                 ),
@@ -72,31 +72,31 @@ class LoadingItem extends StatelessWidget {
             Container(
               height: 10.h,
               width: MediaQuery.of(context).size.width * 1,
-              color: Colors.grey[400],
+              color: Colors.grey[300],
             ),
             SizedBox(height: 10.h),
             Container(
               height: 10.h,
               width: MediaQuery.of(context).size.width * 0.8,
-              color: Colors.grey[400],
+              color: Colors.grey[300],
             ),
             SizedBox(height: 10.h),
             Container(
               height: 10.h,
               width: MediaQuery.of(context).size.width * 0.6,
-              color: Colors.grey[400],
+              color: Colors.grey[300],
             ),
             SizedBox(height: 10.h),
             Container(
               height: 10.h,
               width: MediaQuery.of(context).size.width * 0.4,
-              color: Colors.grey[400],
+              color: Colors.grey[300],
             ),
             SizedBox(height: 10.h),
             Container(
               height: 10.h,
               width: MediaQuery.of(context).size.width * 0.2,
-              color: Colors.grey[400],
+              color: Colors.grey[300],
             ),
           ],
         ),

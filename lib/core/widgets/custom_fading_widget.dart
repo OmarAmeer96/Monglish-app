@@ -18,7 +18,7 @@ class _CustomFadingWidgetState extends State<CustomFadingWidget>
   void initState() {
     animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1000),
+      duration: const Duration(milliseconds: 700),
     );
     animation =
         Tween<double>(begin: 0.2, end: 0.8).animate(animationController);
